@@ -111,13 +111,39 @@ def sell_product(request):
         template_name = 'product/success.html'
         return render(request, template_name, {})
 
-def list_products(request):
+def product_categories(request):
     all_products = Product.objects.all()
-    template_name = 'product/list.html'
+    template_name = 'product/categories.html'
     return render(request, template_name, {'products': all_products})
 
+def product_details(request):
+    template_name = 'product/details.html'
+    return render(request, template_name)
 
+def product_category(request):
+    template_name = 'product/category.html'
+    return render(request, template_name)
 
+def view_account(request):
+    template_name = 'account/view_account.html'
+    return render(request, template_name)
 
+def edit_account(request):
+    template_name = 'account/edit_account.html'
+    return render(request, template_name)
 
+def edit_payment_type(request):
+    template_name = 'account/edit_payment.html'
+    return render(request, template_name)
 
+def add_payment_type(request):
+    template_name = 'account/add_payment.html'
+    return render(request, template_name)
+
+def view_order(request):
+    template_name = 'orders/view_order.html'
+    return render(request, template_name)
+
+def view_checkout(request):
+    template_name = 'orders/view_checkout.html'
+    return render(request, template_name)

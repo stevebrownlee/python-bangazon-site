@@ -92,9 +92,12 @@ Example Doctstrings:
 ```
 """
 purpose: creates a new order for a customer
+
 author: Casey Dailey
-args: (integer) customer_id
-returns: (integer) id of order created
+
+args: customer_id: (integer): id of customer whose order we are creating 
+
+returns: (integer): id of order created
 """    
 ```
 
@@ -103,9 +106,13 @@ If a method calls on several others, please list those.
 ```
 """
 purpose: allow user to add a product to an open order
+
 author: Casey Dailey
+
 args: n/a
+
 returns: n/a
+
 helpers:
     ---------------
     get_active_customer
@@ -123,8 +130,11 @@ please include an example.
 ```
    """
     purpose: 
+    
     author: Aaron Barfoot
-    args: customer_id -- (integer) Id of customer whose payment types we need to list
+    
+    args: customer_id: (integer): Id of customer whose payment types we need to list
+    
     returns: (list of tuples) 
         ex: [(2, 'visa', 1234567890123456, 1)] 
         where the above values represent:

@@ -2,9 +2,11 @@
 <html>
     <head>
         <title>Bangazon</title>
+        {%include "styles.html"%}
     </head>
 
     <body>
+        {%include "navbar.html"%}
         <h1>Login to Bangazon</h1>
 
         <form id="login_form" method="post" action="{% url 'website:login' %}">

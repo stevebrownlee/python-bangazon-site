@@ -1,0 +1,47 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+    </form>
+    <ul class="nav navbar-nav">
+        <li class="">
+            <a href="/">Home</a>
+        </li>
+        <li class="">
+            {% if user.is_authenticated %}
+            <a href="/cart">
+            {%else%}
+            <a href="/login">
+            {%endif%}
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="/">Product Catagories</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="">
+            <a href="/">Sell Products</a>
+        </li>
+        {%endif%}
+        <li class="">
+            {% if user.is_authenticated %}
+            <a href="/profile">
+            {%else%}
+            <a href="/login">
+            {%endif%}
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </a>
+
+        </li>
+        <li class="">
+            <a href="/login">Login</a>
+        </li>
+        <li class="">
+            <a href="/register">Register</a>
+        </li>
+    </ul>
+  </div>
+</nav>

@@ -11,6 +11,9 @@
     <ol>
     {% for product in products %}
         <li>{{ product.title }}</li>
+        <li>{{ product.description }}</li>
+        <li>{{ product.price }}</li>
+        <li>{{ product.quantity }}</li>
     {% endfor %}
     </ol>
   </body>

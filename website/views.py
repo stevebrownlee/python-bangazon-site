@@ -6,6 +6,8 @@ from django.template import RequestContext
 
 from website.forms import UserForm, ProductForm
 from website.models import Product
+from website.models import ProductType
+
 
 def index(request):
     template_name = 'index.html'
@@ -90,7 +92,7 @@ def user_logout(request):
     # in the URL in redirects?????
     return HttpResponseRedirect('/')
 
-
+@login_required(login_url='/login')
 def sell_product(request):
     if request.method == 'GET':
         product_form = ProductForm()
@@ -99,17 +101,19 @@ def sell_product(request):
 
     elif request.method == 'POST':
         form_data = request.POST
-
+        pt = ProductType.objects.get(pk=form_data['product_type'])
         p = Product(
             seller = request.user,
             title = form_data['title'],
             description = form_data['description'],
             price = form_data['price'],
             quantity = form_data['quantity'],
+            product_type = pt,
         )
         p.save()
         template_name = 'product/success.html'
         return render(request, template_name, {})
+
 
 def list_products(request):
     all_products = Product.objects.all()

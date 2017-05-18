@@ -1,0 +1,31 @@
+[
+  {
+    "model": "website.ProductType",
+    "pk": 1,
+    "fields": {
+      "product_type_name": "Jordan's Videos"
+    }
+  },
+  {
+    "model": "website.ProductType",
+    "pk": 2,
+    "fields": {
+      "product_type_name": "Polish T Shirts"
+    }
+  },
+  {
+    "model": "website.ProductType",
+    "pk": 3,
+    "fields": {
+      "product_type_name": "Shoes"
+    }
+  },
+  {
+    "model": "website.ProductType",
+    "pk": 4,
+    "fields": {
+      "product_type_name": "Desktop Fans"
+    }
+  }
+
+]  

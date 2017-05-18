@@ -13,14 +13,11 @@ def cool_function(arg):
     cool_new_variable = arg * 2
 ```
 
-Module names should be lowercase with no dashes of underscores
-unless these would enhance readability.
+Module names snake_case.
 
-This would be ridiculous:
 ```
-import modulethathasareallylongname
+import module_with_longname
 ```
-
 
 
 **Classes** are **CamelCase**

@@ -71,7 +71,7 @@ StoreFront Build Contributors:
   * [Jordan Nelson](https://github.com/jnelsontn)
   * [Dara Thomas](https://github.com/sarawithad)
   * [Aaron Barfoot](https://github.com/barfootaaron)
-  * [Max Baldridge](https://github.com/Maxwell Coriell)
+  * [Max Baldridge](https://github.com/MaxwellCoriell)
 
 ## License
 [MIT © Illegal Llamas](./LICENSE)

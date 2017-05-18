@@ -1,8 +1,21 @@
+"""
+djangazon model configuration for product
+"""
+
 from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
-class Product(models.Model):
+
+class Product (models.Model):
+    """
+    This class models a product in the database.
+
+    ----Fields----
+    title(character): a product's title
+    ETC . . . 
+
+    Author: ?
+    """
     seller = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

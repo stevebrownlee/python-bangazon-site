@@ -3,6 +3,13 @@ from django.db import models
 
 # Create your models here.
 
+class User(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    price = models.IntegerField()
+    quantity = models.IntegerField()
+
+
 class Category(models.Model):
     """
     purpose: Creates Category table within database
@@ -37,16 +44,10 @@ class Product(models.Model):
     )
     quantity = models.IntegerField(null=False)
     description = models.TextField(blank=True, null=False, max_length=500)
-    price = models.DecimalField(null=False, decimal_places=2)
-    date_created = models.DateField(auto_now_add=True)  # This auto generates date on creation
+    price = models.DecimalField(max_digits=5, decimal_places=2, null=False)
+    date_created = models.DateField(auto_now=True, auto_now_add=False)  # This auto generates date on creation
     title = models.CharField(max_length=255)
 
-class User(models.Model):
-
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True, null=True)
-    price = models.IntegerField()
-    quantity = models.IntegerField()
 
 class PaymentType(models.Model):
     """

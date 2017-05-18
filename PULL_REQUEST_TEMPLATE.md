@@ -33,3 +33,11 @@ For example:
     python manage.py migrate
     python manage.py runserver
 ```
+
+## Testing
+Tests run?
+Are all tests passing?
+If not, why?
+
+## READ_ME updates
+Have you updated the README to reflect any relevant changes?

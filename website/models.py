@@ -2,12 +2,21 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+class Profile(models.Model):
+    """
+    purpose: Creates Category table within database
+        Example useage: 
 
-class User(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True, null=True)
-    price = models.IntegerField()
-    quantity = models.IntegerField()
+    author: Taylor Perkins, Justin Short
+
+    args: models.Model: (NA): models class given by Django
+
+    returns: (None): N/A
+    """      
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):  # __unicode__ on Python 2
+        return "This user's name is {}".format(self.user.first_name)
 
 
 class Category(models.Model):
@@ -21,7 +30,10 @@ class Category(models.Model):
 
     returns: (None): N/A
     """      
-    category_name = models.TextField(blank=True, null=False, max_length=50)    
+    category_name = models.TextField()    
+
+    def __str__(self):  # __unicode__ on Python 2
+        return "{}".format(self.category_name)
 
 class Product(models.Model):
     """
@@ -43,10 +55,13 @@ class Product(models.Model):
         on_delete=models.CASCADE,
     )
     quantity = models.IntegerField(null=False)
-    description = models.TextField(blank=True, null=False, max_length=500)
+    description = models.TextField(null=False, max_length=500)
     price = models.DecimalField(max_digits=5, decimal_places=2, null=False)
     date_created = models.DateField(auto_now=True, auto_now_add=False)  # This auto generates date on creation
     title = models.CharField(max_length=255)
+
+    def __str__(self):  # __unicode__ on Python 2
+        return "{}".format(self.title)
 
 
 class PaymentType(models.Model):
@@ -65,7 +80,10 @@ class PaymentType(models.Model):
         on_delete=models.CASCADE,
     )   
     name = models.TextField(blank=True, null=False, max_length=50) 
-    account_number = models.IntegerField(range(12, 19))
+    account_number = models.IntegerField(range(12, 20))
+
+    def __str__(self):  # __unicode__ on Python 2
+        return "{}".format(self.name)
 
 
 class Order(models.Model):
@@ -83,7 +101,13 @@ class Order(models.Model):
         User,
         on_delete=models.CASCADE,
     )   
-    date_complete = models.DateField(null=True, auto_now=False, auto_now_add=False)  # This will get filled upon order completion
+    payment_type = models.ForeignKey(
+        PaymentType,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )   
+    date_complete = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)  # This will get filled upon order completion
 
 
 

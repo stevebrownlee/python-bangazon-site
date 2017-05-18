@@ -1,7 +1,7 @@
 # BangazonCLI
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-Web Storefront for Bangazon, LLC.
+This web application is the source code for the Bangazon e-commerce web site. It is powered by Python and Django.
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ Web Storefront for Bangazon, LLC.
 ## About
 We are The Illegal Llamas, and we are in the middle of production for a storefront for Bangazon, Llc.
 
-Bangazon is a marketplace for users to buy and sell their own physical products. Everything is user content driven.
+Bangazon is a e-commerce marketplace for users to buy and sell their own physical products. Everything is user-content driven.
 
 ### Prerequisites
 Install [pip](https://packaging.python.org/installing/)

@@ -108,8 +108,12 @@ def sell_product(request):
             quantity = form_data['quantity'],
         )
         p.save()
-        template_name = 'product/success.html'
-        return render(request, template_name, {})
+        template_name = 'product/details.html'
+        return render(request, template_name)
+
+def list_products(request):
+    template_name = 'product/list.html'
+    return render(request, template_name)
 
 def product_categories(request):
     all_products = Product.objects.all()

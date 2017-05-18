@@ -11,6 +11,9 @@ class Category(models.Model):
     """
     name = models.CharField(max_length = 255)
 
+    def __str__(self):
+        return self.name
+
 class Product(models.Model):
     """
     purpose: creates the product table in the database
@@ -31,7 +34,7 @@ class Product(models.Model):
     description = models.TextField(blank = True, null = True)
     quantity = models.IntegerField()
     city = models.CharField(max_length = 255)
-    date = models.DateField(max_length = 20)
+    date = models.DateTimeField(auto_now_add=True, blank=True)
 
 class PaymentType(models.Model):
     """

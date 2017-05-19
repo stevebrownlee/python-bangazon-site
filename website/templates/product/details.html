@@ -9,9 +9,11 @@
     <h1>Product Details Views</h1>
 
     <ol>
-    {% for product in products %}
-        <li>{{ product.title }}</li>
-    {% endfor %}
+      <li>Title: {{ product.title }}</li>
+      <li>Description: {{ product.description }}</li>
+      <li>Quantity Available: {{ product.quantity }}</li>
+      <li>Price/Unit: {{ product.price }}</li>      
     </ol>
+    <button>Add to Order</button>
   </body>
 </html>

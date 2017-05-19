@@ -9,7 +9,8 @@
     <h1>Welcome to Bangazon!</h1>
     {% if user.is_authenticated %}
     <h1>Bangazon says... hello {{ user.username }}!</h1>
-    <a href="{% url 'website:list_products' %}">Products</a><br>
+    <a href="{% url 'website:list_products' %}">All Products</a><br>
+    <a href="{% url 'website:sell' %}">Sell Products</a><br>
     <a href="{% url 'website:logout' %}">Logout</a>
     {% else %}
     <h1>Bangazon says...</h1>

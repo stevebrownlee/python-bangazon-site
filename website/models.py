@@ -8,6 +8,6 @@ class Product(models.Model):
         on_delete=models.CASCADE,
     )
     title = models.CharField(max_length=255)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(max_length=255)
     price = models.IntegerField()
     quantity = models.IntegerField()

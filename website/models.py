@@ -16,7 +16,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):  # __unicode__ on Python 2
-        return "This user's name is {}".format(self.user.first_name)
+        return self.user.first_name
 
 
 class Category(models.Model):
@@ -33,7 +33,7 @@ class Category(models.Model):
     category_name = models.TextField()    
 
     def __str__(self):  # __unicode__ on Python 2
-        return "{}".format(self.category_name)
+        return self.category_name
 
 class Product(models.Model):
     """
@@ -61,7 +61,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255)
 
     def __str__(self):  # __unicode__ on Python 2
-        return "{}".format(self.title)
+        return self.title
 
 
 class PaymentType(models.Model):
@@ -83,7 +83,7 @@ class PaymentType(models.Model):
     account_number = models.IntegerField(range(12, 20))
 
     def __str__(self):  # __unicode__ on Python 2
-        return "{}".format(self.name)
+        return self.name
 
 
 class Order(models.Model):

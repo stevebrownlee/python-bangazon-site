@@ -1,19 +1,56 @@
-{% load staticfiles %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Bangazon</title>
-  </head>
-  <body>
-    <h1>Welcome to Bangazon!</h1>
-    {% if user.is_authenticated %}
-    <h1>Bangazon says... hello {{ user.username }}!</h1>
-    <a href="{% url 'website:logout' %}">Logout</a>
-    {% else %}
-    <h1>Bangazon says...</h1>
-    <div><a href="{% url 'website:register' %}">Register</a></div>
-    <div><a href="{% url 'website:login' %}">Login</a></div>
-    {% endif %}
-  </body>
+<html lang="en">
+<head>
+
+  {% block title %}<title>Local Library</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-2">
+      <br>
+      <br>
+      <br>
+      {% block sidebar %}
+      <ul class="sidebar-nav">
+          <li><a href="">Home</a></li>
+          <li><a href="">Product Categories</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'website:sell' %}">
+          Sale Your Product</a></li>
+          {% endif %}
+          <li><a href="">Shopping Cart</a></li>
+
+      </ul>
+     {% endblock %}
+      </div>
+
+      <div class="col-sm-10">
+        <h2> Welcome to Bangazon! </h2>
+        {% if user.is_authenticated %}
+        <h3> Good to see you again, {{user.username}} </h3>
+        <a href="{% url 'website:logout' %}">Logout</a>
+        {% else %}
+        <div><a href="{% url 'website:register' %}">Join the future, Join BANGAZON!</a></div>
+        <div><a href="{% url 'website:login' %}">You've been gone to long! Log in!!! </a></div>
+        {% endif %}
+      </div>
+    </div>
+
+
+
+  </div>
+</body>
 </html>

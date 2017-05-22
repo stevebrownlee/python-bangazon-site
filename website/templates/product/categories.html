@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <h1>All Categories View</h1>
+    <ol>
+          {% for ind, val in top_three_per_cat.items  %}
+            {% for cat in all_categories %}
+              {% if cat.id == ind %}
+                <h3>{{cat}}</h3>
+              {% endif %}
+            {% endfor %}
+            {% for product in val %}
+              <ol>
+                <li>{{product.title}}</li>
+              </ol>
+            {% endfor %}
+          {% endfor %}
+        </ol>
+  </body>
+</html>

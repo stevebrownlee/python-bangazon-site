@@ -19,6 +19,8 @@ class Profile(User):
         return self.user.first_name
 
 
+
+
 class Category(models.Model):
     """
     purpose: Creates Category table within database

@@ -1,7 +1,7 @@
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.template import RequestContext
 
 from website.forms import UserForm, ProductForm
@@ -119,6 +119,24 @@ def list_products(request):
     all_products = Product.objects.all()
     template_name = 'product/list.html'
     return render(request, template_name, {'products': all_products})
+
+def single_product(request, product_id):
+    """
+    purpose: Allows user to view product_detail view, which contains a very specific view
+        for a singular product
+        For an example, visit /product_details/1/ to see a view on the first product created
+        displaying title, description, quantity, price/unit, and "Add to order" button
+
+    author: Max Baldridge
+
+    args: product_id: (integer): id of product we are viewing 
+
+    returns: (render): a view of the request, template to use, and product obj
+    """        
+    template_name = 'product/single.html'
+    product = get_object_or_404(Product, pk=product_id)            
+    return render(request, template_name, {
+        "product": product})
 
 
 

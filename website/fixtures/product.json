@@ -16,12 +16,35 @@
      "pk": 2,
      "fields": {
        "seller": 1,
-       "product_type": 1,
-       "title": "Large bag of gummy bears",
-       "description": "A bag of gummy bears to share with friends",
-       "price": 5.99,
-       "quantity": 2
+       "product_type": 2,
+       "title": "Small bag of gummy bears",
+       "description": "A bag of gummy bears to share with yourself",
+       "price": 2.99,
+       "quantity": 5
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 3,
+     "fields": {
+       "seller": 1,
+       "product_type": 3,
+       "title": "Piece of the Titanic",
+       "description": "She were a fine ship that flew too close to the sun (i.e. an iceburg)",
+       "price": 150.25,
+       "quantity": 100
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 4,
+     "fields": {
+       "seller": 1,
+       "product_type": 4,
+       "title": "Babadook",
+       "description": "Don't Let Him In!",
+       "price": 666.00,
+       "quantity": 1
      }
    }
-
  ]

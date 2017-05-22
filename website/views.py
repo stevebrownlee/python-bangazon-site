@@ -146,3 +146,48 @@ def single_product(request, product_id):
 
 
 
+@login_required(login_url='/login')
+def add_product_to_cart(request, pk):
+        """
+    purpose: Allows user to add a product to their cart
+
+    author: 
+
+    args:  
+
+    returns: 
+    """  
+    product = models.Product.objects.get(id = pk)
+
+
+
+
+@login_required(login_url='/login')
+def view_cart(request):
+    """
+    purpose: Allows user to view cart and all products they've added to cart
+
+    author: Dara Thomas
+
+    args:  request -- The full HTTP request object
+
+    returns: rendered view of the cart page, with a list of products that are currently in the user's cart
+    """        
+    template_name = 'cart.html' 
+    products_in_cart =  models.Order.objects.get(user = request.user.id)
+    return render(request, template_name, {"product": product})
+
+
+
+@login_required(login_url='/login')
+def complete_order_add_payment():
+    """
+    purpose: Allows user to add a payment type to their order and therefore complete and place the order
+
+    author: 
+
+    args:  
+
+    returns: a checkout page where the user sees their order total and can select a payment type for their order
+    """    
+    template_name = 'checkout.html'

@@ -109,6 +109,25 @@ def sell_product(request):
         template_name = 'product/details.html'
         return render(request, template_name)
 
+def add_payment_type(request):
+
+    if request.method == 'GET':
+        product_form = ProductForm()
+        template_name = 'account/add_payment.html'
+        return render(request, template_name, {'product_form': product_form})
+
+    elif request.method == 'POST':
+        form_data = request.POST
+
+        p = PaymentType(
+            account_holder = request.user,
+            name = form_data['name'],
+            account_number = form_data['account_number']
+        )
+        p.save()
+        template_name = 'product/details.html'
+        return render(request, template_name)
+
 def list_products(request):
     template_name = 'product/list.html'
     return render(request, template_name)
@@ -128,12 +147,12 @@ def product_details(request, product_id):
 
     author: Taylor Perkins
 
-    args: product_id: (integer): id of product we are viewing 
+    args: product_id: (integer): id of product we are viewing
 
     returns: (render): a view of of the request, template to use, and product obj
-    """        
+    """
     template_name = 'product/details.html'
-    product = get_object_or_404(Product, pk=product_id)            
+    product = get_object_or_404(Product, pk=product_id)
     print(product)
     return render(request, template_name, {
         "product": product})

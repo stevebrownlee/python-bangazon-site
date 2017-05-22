@@ -18,6 +18,6 @@ urlpatterns = [
     url(r'^edit_payment_type$', views.edit_payment_type, name='edit_payment_type'),
     url(r'^add_payment_type$', views.add_payment_type, name='add_payment_type'),    
     url(r'^view_order$', views.view_order, name='view_order'),
-    url(r'^view_checkout$', views.view_checkout, name='view_checkout'),
+    url(r'^view_checkout$', views.view_checkout, name='view_checkout')
 
 ]

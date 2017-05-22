@@ -35,6 +35,9 @@ class Category(models.Model):
     def __str__(self):  # __unicode__ on Python 2
         return "{}".format(self.category_name)
 
+    def get_products(self):
+        return Product.objects.filter(product_category=self)
+
 class Product(models.Model):
     """
     purpose: Creates Product table within database

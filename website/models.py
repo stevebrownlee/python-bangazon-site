@@ -111,11 +111,3 @@ class Order(models.Model):
 
 
 
-
-
-
-
-
-
-
-

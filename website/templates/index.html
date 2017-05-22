@@ -27,7 +27,10 @@
       <ul class="sidebar-nav">
           <li><a href="">Home</a></li>
           <li><a href="">Product Categories</a></li>
-          <li><a href="">Sale Your Product</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'website:sell' %}">
+          Sale Your Product</a></li>
+          {% endif %}
           <li><a href="">Shopping Cart</a></li>
 
       </ul>

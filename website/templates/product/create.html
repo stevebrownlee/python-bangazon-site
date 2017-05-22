@@ -8,7 +8,7 @@
   <body>
     <h1>Sell Product</h1>
 
-
+    
     <form action="{% url 'website:sell' %}" method="post">
       {% csrf_token %}
       {{ product_form.as_p }}

@@ -10,7 +10,7 @@
       
       {% for category in all_categories %}      
       {% with cat_products=category.get_products %}
-        <h2>{{ category.category_name }} ({{ cat_products|length }})</h2>        
+        <h2><a href="{% url 'website:product_category_view' category_id=category.id %}">{{ category.category_name }} ({{ cat_products|length }})</a></h2>        
         <ol>
           {% for product in cat_products|slice:":3" %}
             <li><a href="{% url 'website:product_details' product_id=product.id %}">{{product.title}}</a></li>

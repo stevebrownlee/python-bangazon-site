@@ -90,24 +90,24 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 def sell_product(request):
-        if request.method == 'GET':
-            product_form = ProductForm()
-            template_name = 'product/create.html'
-            return render(request, template_name, {'product_form': product_form})
+    if request.method == 'GET':
+        product_form = ProductForm()
+        template_name = 'product/create.html'
+        return render(request, template_name, {'product_form': product_form})
 
-        elif request.method == 'POST':
-            form_data = request.POST
+    elif request.method == 'POST':
+        form_data = request.POST
 
-            p = Product(
-                seller = request.user,
-                title = form_data['title'],
-                description = form_data['description'],
-                price = form_data['price'],
-                quantity = form_data['quantity'],
-            )
-            p.save()
-            template_name = 'product/details.html'
-            return render(request, template_name)
+        p = Product(
+            seller = request.user,
+            title = form_data['title'],
+            description = form_data['description'],
+            price = form_data['price'],
+            quantity = form_data['quantity'],
+        )
+        p.save()
+        template_name = 'product/details.html'
+        return render(request, template_name)
 
 def list_products(request):
     template_name = 'product/list.html'
@@ -153,9 +153,28 @@ def product_details(request, product_id):
     return render(request, template_name, {
         "product": product})
 
-def product_category(request):
+def view_specific_product(request, category_id):
+    """
+    purpose: Allows user to view a specific category view, which contains all products directly related to the given category
+
+        For an example, visit /product_category/1 to see a view on the first category created
+        dispaying all products related. All products also have links sending you directly to their specific page
+
+    author: Taylor Perkins
+
+    args: category_id: (integer): id of category we are viewing
+
+    returns: (render): a view of of the request, template to use, and product obj
+                (category): category we are viewing
+                (products): all products related to given category
+    """
     template_name = 'product/category.html'
-    return render(request, template_name)
+    category = get_object_or_404(Category, pk=category_id)    
+    products = Product.objects.filter(product_category=category)    
+    print(products)
+    return render(request, template_name, {
+        "category": category,
+        "products": products})
 
 def view_account(request):
     template_name = 'account/view_account.html'

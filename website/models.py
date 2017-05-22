@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-class Profile(models.Model):
+class Profile(User):
     """
     purpose: Creates Category table within database
         Example useage: 

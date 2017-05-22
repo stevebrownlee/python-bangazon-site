@@ -1,0 +1,67 @@
+[
+   {
+     "model": "website.Product",
+     "pk": 1,
+     "fields": {
+       "seller": 1,
+       "product_category": 1,
+       "quantity": 3,
+       "description": "Super cool computer",
+       "price": 200.00,
+       "date_created": "2014-08-18",
+       "title": "computer"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 2,
+     "fields": {
+       "seller": 1,
+       "product_category": 2,
+       "quantity": 5,
+       "description": "Play a game of basketball",
+       "price": 19.99,
+       "date_created": "2014-08-18",
+       "title": "basketball"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 3,
+     "fields": {
+       "seller": 1,
+       "product_category": 3,
+       "quantity": 10,
+       "description": "Coomfy coomfy chairs!",
+       "price": 399.99,
+       "date_created": "2014-08-18",
+       "title": "recliner"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 4,
+     "fields": {
+       "seller": 1,
+       "product_category": 4,
+       "quantity": 100,
+       "description": "You can eat with these",
+       "price": 49.99,
+       "date_created": "2014-08-18",
+       "title": "dinner set"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 5,
+     "fields": {
+       "seller": 1,
+       "product_category": 5,
+       "quantity": 1,
+       "description": "Wear this!",
+       "price": 35.99,
+       "date_created": "2014-08-18",
+       "title": "Jacket"
+     }
+   }
+ ]

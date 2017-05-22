@@ -16,7 +16,9 @@ class Profile(User):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):  # __unicode__ on Python 2
-        return "This user's name is {}".format(self.user.first_name)
+        return self.user.first_name
+
+
 
 
 class Category(models.Model):
@@ -33,7 +35,7 @@ class Category(models.Model):
     category_name = models.TextField()    
 
     def __str__(self):  # __unicode__ on Python 2
-        return "{}".format(self.category_name)
+        return self.category_name
 
     def get_products(self):
         print(dir(self))
@@ -44,7 +46,7 @@ class Product(models.Model):
     purpose: Creates Product table within database
         Example useage: 
 
-    author: Taylor Perkins, Justin Short
+    author: Taylor Perkins, Justin Short, Casey Dailey
 
     args: models.Model: (NA): models class given by Django
 
@@ -54,9 +56,18 @@ class Product(models.Model):
         User,
         on_delete=models.CASCADE,
     )
+    #django will display a dropdown with these choices
+    CATEGORY_CHOICES = (
+    ('electronics','ELECTRONICS'),
+    ('sports', 'SPORTS'),
+    ('home','HOME'),
+    ('general','GENERAL'),
+    ('clothing','CLOTHING'),
+    )
     product_category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
+        choices=CATEGORY_CHOICES
     )
     quantity = models.IntegerField(null=False)
     description = models.TextField(null=False, max_length=500)
@@ -65,7 +76,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255)
 
     def __str__(self):  # __unicode__ on Python 2
-        return "{}".format(self.title)
+        return self.title
 
 
 class PaymentType(models.Model):
@@ -87,7 +98,7 @@ class PaymentType(models.Model):
     account_number = models.IntegerField(range(12, 20))
 
     def __str__(self):  # __unicode__ on Python 2
-        return "{}".format(self.name)
+        return self.name
 
 
 class Order(models.Model):

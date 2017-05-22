@@ -36,6 +36,7 @@ class Category(models.Model):
         return "{}".format(self.category_name)
 
     def get_products(self):
+        print(dir(self))
         return Product.objects.filter(product_category=self)
 
 class Product(models.Model):

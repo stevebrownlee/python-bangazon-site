@@ -110,7 +110,9 @@ def sell_product(request):
         return render(request, template_name)
 
 def add_payment_type(request):
-
+    '''
+    THIS IS THE THING THAT I AM CURRENTLY WORKING ON: HARRY EPSTEIN
+    '''
     if request.method == 'GET':
         product_form = ProductForm()
         template_name = 'account/add_payment.html'

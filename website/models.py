@@ -40,7 +40,7 @@ class Product(models.Model):
     purpose: Creates Product table within database
         Example useage: 
 
-    author: Taylor Perkins, Justin Short
+    author: Taylor Perkins, Justin Short, Casey Dailey
 
     args: models.Model: (NA): models class given by Django
 
@@ -50,9 +50,18 @@ class Product(models.Model):
         User,
         on_delete=models.CASCADE,
     )
+    #django will display a dropdown with these choices
+    CATEGORY_CHOICES = (
+    ('electronics','ELECTRONICS'),
+    ('sports', 'SPORTS'),
+    ('home','HOME'),
+    ('general','GENERAL'),
+    ('clothing','CLOTHING'),
+    )
     product_category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
+        choices=CATEGORY_CHOICES
     )
     quantity = models.IntegerField(null=False)
     description = models.TextField(null=False, max_length=500)

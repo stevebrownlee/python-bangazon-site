@@ -75,6 +75,8 @@ class PaymentType(models.Model):
 
     returns: (None): N/A
     """
+
+
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

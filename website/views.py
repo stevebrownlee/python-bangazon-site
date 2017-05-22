@@ -4,8 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.template import RequestContext
 
-from website.forms import UserForm, ProductForm
-from website.models import Product, Category
+from website.forms import UserForm, ProductForm, AddPaymentForm
+from website.models import Product, Category, PaymentType
 
 def index(request):
     template_name = 'index.html'
@@ -114,9 +114,9 @@ def add_payment_type(request):
     THIS IS THE THING THAT I AM CURRENTLY WORKING ON: HARRY EPSTEIN
     '''
     if request.method == 'GET':
-        product_form = ProductForm()
+        add_payment_form = AddPaymentForm()
         template_name = 'account/add_payment.html'
-        return render(request, template_name, {'product_form': product_form})
+        return render(request, template_name, {'add_payment_form': add_payment_form})
 
     elif request.method == 'POST':
         form_data = request.POST
@@ -127,7 +127,7 @@ def add_payment_type(request):
             account_number = form_data['account_number']
         )
         p.save()
-        template_name = 'product/details.html'
+        template_name = 'account/add_payment.html'
         return render(request, template_name)
 
 def list_products(request):

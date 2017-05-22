@@ -8,11 +8,11 @@
   <body>
     <h1>Add Payment Type</h1>
 
-    <ol>
-    {% for product in products %}
-        <li>{{ product.title }}</li>
-    {% endfor %}
-    </ol>
+    <form action="{% url 'website:add_payment_type' %}" method="post">
+      {% csrf_token %}
+      {{ add_payment_form.as_p }}
+      <input type="submit" value="Add Payment Type" />
+    </form>
 
 
   </body>

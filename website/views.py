@@ -10,17 +10,23 @@ from website.models import ProductType
 
 
 def index(request):
+    """
+    Purpose: renders the index page with a list of (max) 20 products
+    Author: Harper Frankstone
+    Args: request -- the full HTTP request object
+    Returns: rendered view of the index page, with a list of products
+    """
+    all_products = Product.objects.all().order_by('-id')[:20]
     template_name = 'index.html'
-    return render(request, template_name, {})
+    return render(request, template_name, {'products': all_products})
 
 
-# Create your views here.
 def register(request):
-    '''Handles the creation of a new user for authentication
+    """Handles the creation of a new user for authentication
 
     Method arguments:
       request -- The full HTTP request object
-    '''
+    """
 
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
@@ -137,9 +143,6 @@ def single_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)            
     return render(request, template_name, {
         "product": product})
-
-
-
 
 
 

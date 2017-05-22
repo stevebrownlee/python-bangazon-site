@@ -17,5 +17,10 @@
     <div><a href="{% url 'website:register' %}">Register</a></div>
     <div><a href="{% url 'website:login' %}">Login</a></div>
     {% endif %}
+    <ol>
+      {% for product in products %}
+          <a href="{% url 'website:single_product' product.id %}"><li>{{ product.title }} - {{ product.description }}</li></a> 
+      {% endfor %}
+    </ol>
   </body>
 </html>

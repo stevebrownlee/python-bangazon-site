@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <h1>Single Product Views</h1>
+
+    <ol>
+
+      <li>Title: {{ product.title }}</li>
+      <li>Description: {{ product.description }}</li>
+      <li>Quantity Available: {{ product.quantity }}</li>
+      <li>Price/Unit: {{ product.price }}</li>      
+    </ol>
+    <button>Add to Order</button> <!-- This does nothing right now  -->
+
+    <br>
+    <br>
+
+     <a href="{% url 'website:list_products' %}">View Products</a>
+  </body>
+</html>

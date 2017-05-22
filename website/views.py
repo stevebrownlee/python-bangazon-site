@@ -90,24 +90,24 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 def sell_product(request):
-        if request.method == 'GET':
-            product_form = ProductForm()
-            template_name = 'product/create.html'
-            return render(request, template_name, {'product_form': product_form})
+    if request.method == 'GET':
+        product_form = ProductForm()
+        template_name = 'product/create.html'
+        return render(request, template_name, {'product_form': product_form})
 
-        elif request.method == 'POST':
-            form_data = request.POST
+    elif request.method == 'POST':
+        form_data = request.POST
 
-            p = Product(
-                seller = request.user,
-                title = form_data['title'],
-                description = form_data['description'],
-                price = form_data['price'],
-                quantity = form_data['quantity'],
-            )
-            p.save()
-            template_name = 'product/details.html'
-            return render(request, template_name)
+        p = Product(
+            seller = request.user,
+            title = form_data['title'],
+            description = form_data['description'],
+            price = form_data['price'],
+            quantity = form_data['quantity'],
+        )
+        p.save()
+        template_name = 'product/details.html'
+        return render(request, template_name)
 
 def list_products(request):
     template_name = 'product/list.html'
@@ -134,6 +134,7 @@ def product_details(request, product_id):
     """        
     template_name = 'product/details.html'
     product = get_object_or_404(Product, pk=product_id)            
+    print(product)
     return render(request, template_name, {
         "product": product})
 

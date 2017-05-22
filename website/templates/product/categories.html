@@ -9,8 +9,14 @@
     <h1>All Categories View</h1>
 
     <ol>
-    {% for product in products %}
-        <li>{{ product.title }}</li>
+    {% for type in category %}
+      <h2><b><a href="">  {{ type.category_name }}</a> <br></b></h2>
+      {% for item in product reversed %}
+          {% if item.product_category_id == type.id %}
+          <h5> &nbsp &nbsp -->      <a href="">            {{ item.title}}    ({{item.quantity}}) </a>  <br>  </h5>
+
+    {% endif %}
+    {% endfor %}
     {% endfor %}
     </ol>
   </body>

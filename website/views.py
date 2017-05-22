@@ -114,9 +114,10 @@ def list_products(request):
     return render(request, template_name)
 
 def product_categories(request):
-    all_products = Product.objects.all()
+    all_categories = Category.objects.all()
+    all_products = Product.objects.all().order_by('product_category_id')
     template_name = 'product/categories.html'
-    return render(request, template_name, {'products': all_products})
+    return render(request, template_name, {'category': all_categories, 'product': all_products})
 
 def product_details(request, product_id):
     """
@@ -128,12 +129,12 @@ def product_details(request, product_id):
 
     author: Taylor Perkins
 
-    args: product_id: (integer): id of product we are viewing 
+    args: product_id: (integer): id of product we are viewing
 
     returns: (render): a view of of the request, template to use, and product obj
-    """        
+    """
     template_name = 'product/details.html'
-    product = get_object_or_404(Product, pk=product_id)            
+    product = get_object_or_404(Product, pk=product_id)
     return render(request, template_name, {
         "product": product})
 

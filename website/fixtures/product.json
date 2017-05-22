@@ -4,9 +4,9 @@
      "pk": 1,
      "fields": {
        "seller": 1,
-       "product_type": 1,
-       "title": "Large bag of gummy bears",
-       "description": "A bag of gummy bears to share with friends",
+       "product_type": 2,
+       "title": "Tractor T shirt",
+       "description": "White t shirt with Polish Tractors",
        "price": 5.99,
        "quantity": 2
      }
@@ -16,9 +16,9 @@
      "pk": 2,
      "fields": {
        "seller": 1,
-       "product_type": 1,
-       "title": "Large bag of gummy bears",
-       "description": "A bag of gummy bears to share with friends",
+       "product_type": 4,
+       "title": "White fan",
+       "description": "Jordan's white fan",
        "price": 5.99,
        "quantity": 2
      }

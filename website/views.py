@@ -90,6 +90,15 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 def sell_product(request):
+    """
+    purpose: produce a form for the user to create a product to sell
+
+    author: casey dailey
+
+    args: request
+
+    returns: redirect to detail view for product created
+    """
     if request.method == 'GET':
         product_form = ProductForm()
         template_name = 'product/create.html'
@@ -104,10 +113,11 @@ def sell_product(request):
             description = form_data['description'],
             price = form_data['price'],
             quantity = form_data['quantity'],
+            #create an instance of category of where category_name = the user's choice
+            product_category = Category.objects.get(category_name=form_data['product_category'])
         )
         p.save()
-        template_name = 'product/details.html'
-        return render(request, template_name)
+        return HttpResponseRedirect('product_details/{}'.format(p.id))
 
 def list_products(request):
     template_name = 'product/list.html'

@@ -11,8 +11,11 @@ from website.models import Product
 
 def product_detail(request, product_id):
     """
-
+    purpose: gets a single product to be viewed on product_detail.html
     author: James Tonkin
+    args: request allows Django to see user session data
+          product_id is used to generate the individual product
+    returns: Combines product_detail.html with product dictionary and returns the request with that rendered text.
     """
 
     product = get_object_or_404(models.Product, pk=product_id)

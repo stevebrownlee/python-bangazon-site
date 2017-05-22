@@ -115,9 +115,24 @@ def list_products(request):
 
 def product_categories(request):
     all_categories = Category.objects.all()
-    all_products = Product.objects.all().order_by('product_category_id')
+    all_products = Product.objects.all().order_by('-id')
+    top_three_per_cat = dict()
+
+    for product in all_products:
+        print(product.product_category.id)
+        try:
+            cat_product = top_three_per_cat[product.product_category.id]
+            if len(cat_product) < 3:
+                cat_product.add(product)
+                print(top_three_per_cat)
+        except KeyError:
+            top_three_per_cat[product.product_category.id] = set()
+            top_three_per_cat[product.product_category.id].add(product)
+            print(top_three_per_cat)
+
+    print(top_three_per_cat)
     template_name = 'product/categories.html'
-    return render(request, template_name, {'category': all_categories, 'product': all_products})
+    return render(request, template_name, {'all_categories': all_categories, 'product': all_products, 'top_three_per_cat': top_three_per_cat})
 
 def product_details(request, product_id):
     """

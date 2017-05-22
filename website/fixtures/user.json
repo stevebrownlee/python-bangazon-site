@@ -1,0 +1,20 @@
+[
+  {
+    "pk": 1,
+    "model": "auth.user",
+    "fields": {
+      "username": "johnlennon",
+      "first_name": "John",
+      "last_name": "Lennon",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2014-08-19T10:28:53Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "hey",
+      "email": "john_lennon@gmail.com",
+      "date_joined": "2014-08-18T10:28:53Z"
+    }
+  }
+]

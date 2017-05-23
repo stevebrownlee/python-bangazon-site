@@ -1,0 +1,10 @@
+[
+   {
+     "model": "website.Product_Order",
+     "pk": 1,
+     "fields": {
+       "product": 1,
+       "order": 1       
+     }
+   }
+]

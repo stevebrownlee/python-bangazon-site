@@ -1,0 +1,327 @@
+[
+   {
+     "model": "website.Product",
+     "pk": 1,
+     "fields": {
+       "seller": 1,
+       "product_category": 1,
+       "quantity": 3,
+       "description": "Super cool computer",
+       "price": 200.00,
+       "date_created": "2014-08-18",
+       "title": "computer"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 2,
+     "fields": {
+       "seller": 1,
+       "product_category": 2,
+       "quantity": 5,
+       "description": "Play a game of basketball",
+       "price": 19.99,
+       "date_created": "2014-08-18",
+       "title": "basketball"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 3,
+     "fields": {
+       "seller": 1,
+       "product_category": 3,
+       "quantity": 10,
+       "description": "Coomfy coomfy chairs!",
+       "price": 399.99,
+       "date_created": "2014-08-18",
+       "title": "recliner"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 4,
+     "fields": {
+       "seller": 1,
+       "product_category": 4,
+       "quantity": 100,
+       "description": "You can eat with these",
+       "price": 49.99,
+       "date_created": "2014-08-18",
+       "title": "dinner set"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 5,
+     "fields": {
+       "seller": 1,
+       "product_category": 5,
+       "quantity": 1,
+       "description": "Wear this!",
+       "price": 35.99,
+       "date_created": "2014-08-18",
+       "title": "Jacket"
+     }
+   },
+   {  
+     "model": "website.Product",
+     "pk": 6,
+     "fields": {
+       "seller": 1,
+       "product_category": 1,
+       "quantity": 5,
+       "description": "Apple Iphone 6s",
+       "price": 750.00,
+       "date_created": "2014-08-18",
+       "title": "Iphone 6s"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 7,
+     "fields": {
+       "seller": 1,
+       "product_category": 2,
+       "quantity": 6,
+       "description": "Soccer Ball",
+       "price": 19.99,
+       "date_created": "2014-08-18",
+       "title": "soccer ball"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 8,
+     "fields": {
+       "seller": 1,
+       "product_category": 3,
+       "quantity": 10,
+       "description": "Leather Sofa",
+       "price": 899.99,
+       "date_created": "2014-08-18",
+       "title": "L shaped leather sofa"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 9,
+     "fields": {
+       "seller": 1,
+       "product_category": 4,
+       "quantity": 100,
+       "description": "Goldstar Beer, made in Israel.",
+       "price": 2.99,
+       "date_created": "2014-08-18",
+       "title": "Goldstar beer"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 10,
+     "fields": {
+       "seller": 1,
+       "product_category": 5,
+       "quantity": 12,
+       "description": "Gray suede ankle boots with a block heel.",
+       "price": 795.99,
+       "date_created": "2014-08-18",
+       "title": "Prada Boots"
+     }
+   },
+  {
+     "model": "website.Product",
+     "pk": 11,
+     "fields": {
+       "seller": 1,
+       "product_category": 1,
+       "quantity": 5,
+       "description": "Mac Book Pro 13",
+       "price": 800.00,
+       "date_created": "2014-08-18",
+       "title": "Mac Book Pro 13"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 12,
+     "fields": {
+       "seller": 1,
+       "product_category": 2,
+       "quantity": 5,
+       "description": "baseball",
+       "price": 10.99,
+       "date_created": "2014-08-18",
+       "title": "baseball"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 13,
+     "fields": {
+       "seller": 1,
+       "product_category": 3,
+       "quantity": 10,
+       "description": "Dining Table, sits four, modern.",
+       "price": 399.99,
+       "date_created": "2014-08-18",
+       "title": "Dining Table"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 14,
+     "fields": {
+       "seller": 1,
+       "product_category": 4,
+       "quantity": 100,
+       "description": "chop sticks made out of gold!",
+       "price": 999.99,
+       "date_created": "2014-08-18",
+       "title": "chop sticks"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 15,
+     "fields": {
+       "seller": 1,
+       "product_category": 5,
+       "quantity": 1,
+       "description": "Womens Diesel Jeans, Made in Italy.",
+       "price": 35.99,
+       "date_created": "2014-08-18",
+       "title": "Diesel Jeans"
+     }
+   },
+  {
+     "model": "website.Product",
+     "pk": 16,
+     "fields": {
+       "seller": 1,
+       "product_category": 1,
+       "quantity": 3,
+       "description": "JBL Speakers, lifetime warrenty. Keep your neighbors up with these.",
+       "price": 400.00,
+       "date_created": "2014-08-18",
+       "title": "JBL Speakers"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 17,
+     "fields": {
+       "seller": 1,
+       "product_category": 2,
+       "quantity": 5,
+       "description": "Tennis Balls made out of the best materials.",
+       "price": 19.99,
+       "date_created": "2014-08-18",
+       "title": "Tennis Ball"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 18,
+     "fields": {
+       "seller": 1,
+       "product_category": 3,
+       "quantity": 10,
+       "description": "Coffee Table, modern, sleek, and made from oak wood and glass.",
+       "price": 399.99,
+       "date_created": "2014-08-18",
+       "title": "Coffee Table"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 19,
+     "fields": {
+       "seller": 1,
+       "product_category": 4,
+       "quantity": 100,
+       "description": "Potato Chips",
+       "price": 4.99,
+       "date_created": "2014-08-18",
+       "title": "Yummy potato chips"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 20,
+     "fields": {
+       "seller": 1,
+       "product_category": 5,
+       "quantity": 1,
+       "description": "Converse sneakers",
+       "price": 35.99,
+       "date_created": "2014-08-18",
+       "title": "Converse Shoes"
+     }
+   },
+  {
+     "model": "website.Product",
+     "pk": 21,
+     "fields": {
+       "seller": 1,
+       "product_category": 1,
+       "quantity": 3,
+       "description": "Gibson Guitar owned by The Beatles",
+       "price": 999.00,
+       "date_created": "2014-08-18",
+       "title": "Gibson Guitar"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 22,
+     "fields": {
+       "seller": 1,
+       "product_category": 2,
+       "quantity": 5,
+       "description": "Vollyball that wont hurt your wrists..",
+       "price": 19.99,
+       "date_created": "2014-08-18",
+       "title": "Vollyball"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 23,
+     "fields": {
+       "seller": 1,
+       "product_category": 3,
+       "quantity": 10,
+       "description": "Super sharp knifes. will keep useless people out of the kitchen.",
+       "price": 399.99,
+       "date_created": "2014-08-18",
+       "title": "Knife Set"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 24,
+     "fields": {
+       "seller": 1,
+       "product_category": 4,
+       "quantity": 100,
+       "description": "You can eat with these, and they are also made out of gold.",
+       "price": 999.99,
+       "date_created": "2014-08-18",
+       "title": "Silverware"
+     }
+   },
+   {
+     "model": "website.Product",
+     "pk": 25,
+     "fields": {
+       "seller": 1,
+       "product_category": 5,
+       "quantity": 1,
+       "description": "Wear this, and look amazing doing it!",
+       "price": 999.99,
+       "date_created": "2014-08-18",
+       "title": "Prada Bag"
+     }
+   }
+]

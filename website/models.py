@@ -31,8 +31,8 @@ class Order(models.Model):
     payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, through="ProductOrder")
 
-    def __str__(self):
-        return self.order_date
+    # def __str__(self):
+    #     return self.order_date
 
 
 

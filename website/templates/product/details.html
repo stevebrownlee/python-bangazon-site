@@ -12,8 +12,15 @@
       <li>Title: {{ product.title }}</li>
       <li>Description: {{ product.description }}</li>
       <li>Quantity Available: {{ product.quantity }}</li>
-      <li>Price/Unit: {{ product.price }}</li>          
+      <li>Price/Unit: {{ product.price }}</li>
     </ol>
-    <button>Add to Order</button>
+
+  {% if request.user.is_authenticated %}
+  <form method="post" action="{% url 'website:product_details' product_id=product.id %}">
+    {% csrf_token %}
+    <button type="submit" value="submit">Add to Order</button>
+  </form>
+  {% endif %}
+
   </body>
 </html>

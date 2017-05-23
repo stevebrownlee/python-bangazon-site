@@ -2,10 +2,11 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
+from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 
 from website.forms import UserForm, ProductForm
-from website.models import Product, Category
+from website.models import Product, Category, Order
 
 def index(request):
     template_name = 'index.html'
@@ -146,6 +147,7 @@ def product_categories(request):
     template_name = 'product/categories.html'
     return render(request, template_name, {'all_categories': all_categories, 'product': all_products, 'top_three_per_cat': top_three_per_cat})
 
+
 def product_details(request, product_id):
     """
     purpose: Allows user to view product_detail view, which contains a very specific view
@@ -160,12 +162,41 @@ def product_details(request, product_id):
 
     returns: (render): a view of of the request, template to use, and product obj
     """
-    template_name = 'product/details.html'
-    product = get_object_or_404(Product, pk=product_id)            
-    print(product)
-    
+    if request.method == "GET":
+        template_name = 'product/details.html'
+        product = get_object_or_404(Product, pk=product_id)
+        print(product)
+
+
+    elif request.method == "POST":
+        product = get_object_or_404(Product, pk=product_id)
+        template_name = 'product/details.html'
+        all_orders = Order.objects.filter(buyer=request.user)
+
+        try:
+            open_order = all_orders.get(date_complete__isnull=True)
+            print(open_order)
+            product.order.add(open_order)
+
+            return HttpResponseRedirect('/view_order/{}'.format(open_order.id))
+
+
+        except ObjectDoesNotExist:
+            print("DoesNotExistError")
+            open_order = Order(
+                buyer = request.user,
+                payment_type = None,
+                date_complete = None
+            )
+            open_order.save()
+            p_o = product.order.create(open_order)
+            users_orders = Order.objects.filter(buyer=request.user)
+            print(users_orders)
+            
+            return HttpResponseRedirect('/view_order/{}'.format(open_order.id))
+
     return render(request, template_name, {
-        "product": product})
+    "product": product})
 
 def view_specific_product(request, category_id):
     """
@@ -183,8 +214,8 @@ def view_specific_product(request, category_id):
                 (products): all products related to given category
     """
     template_name = 'product/category.html'
-    category = get_object_or_404(Category, pk=category_id)    
-    products = Product.objects.filter(product_category=category)    
+    category = get_object_or_404(Category, pk=category_id)
+    products = Product.objects.filter(product_category=category)
     print(products)
     return render(request, template_name, {
         "category": category,
@@ -206,7 +237,8 @@ def add_payment_type(request):
     template_name = 'account/add_payment.html'
     return render(request, template_name)
 
-def view_order(request):
+def view_order(request, product_id):
+
     template_name = 'orders/view_order.html'
     return render(request, template_name)
 

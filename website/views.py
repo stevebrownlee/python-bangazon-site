@@ -153,10 +153,13 @@ def product_details(request, product_id):
     purpose: Allows user to view product_detail view, which contains a very specific view
         for a singular product
 
+        if the user clicks "add to order". Their current open order will be updated and the
+        user will be routed to that order.
+
         For an example, visit /product_details/1/ to see a view on the first product created
         displaying title, description, quantity, price/unit, and "Add to order" button
 
-    author: Taylor Perkins
+    author: Taylor Perkins,Justin Short
 
     args: product_id: (integer): id of product we are viewing
 
@@ -192,7 +195,7 @@ def product_details(request, product_id):
             p_o = product.order.create(open_order)
             users_orders = Order.objects.filter(buyer=request.user)
             print(users_orders)
-            
+
             return HttpResponseRedirect('/view_order/{}'.format(open_order.id))
 
     return render(request, template_name, {

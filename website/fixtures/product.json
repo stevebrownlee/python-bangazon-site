@@ -1,0 +1,275 @@
+[
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Bama hat",
+      "price": 17.00,
+      "description": "Good hat of the best team of all time ever.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 8,
+      "seller": 1
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Fender Blues Jr",
+      "price": 375.00,
+      "description": "This is a good amp! You should buy it.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 1,
+      "seller": 2
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Mac Book Pro",
+      "price": 2000.00,
+      "description": "This mac books works well.",
+      "quantity": 5,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 1,
+      "seller": 1
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Bue Ray Player",
+      "price": 150.00,
+      "description": "It plays blue ray.",
+      "quantity": 2,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 1,
+      "seller": 2
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Rolling White Board",
+      "price": 19.00,
+      "description": "You can write things on it.",
+      "quantity": 7,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 8,
+      "seller": 3
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Paper",
+      "price": 30.00,
+      "description": "",
+      "quantity": 3000,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 8,
+      "seller": 4
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Beats Headphones",
+      "price": 99.00,
+      "description": "Over priced headphones",
+      "quantity": 1,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 2,
+      "seller": 5
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Interstate Battery",
+      "price": 112.00,
+      "description": "Quality battery.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 2,
+      "seller": 6
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Coffee Mug Rack",
+      "price": 10.00,
+      "description": "Holds all your coffee mugs and stuff.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 2,
+      "seller": 1
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Pack of Gummies",
+      "price": 10.00,
+      "description": "These gummies will kill you.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 3,
+      "seller": 6
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Vanilla Coke",
+      "price": 4.00,
+      "description": "This is a special breed of coke.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 3,
+      "seller": 7
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Gold Ring",
+      "price": 100200.00,
+      "description": "Nicest ring ever!!",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 3,
+      "seller": 7
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Rocket League",
+      "price": 45.00,
+      "description": "I have no idea why people play this.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 4,
+      "seller": 6
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Red Ball",
+      "price": 17.00,
+      "description": "This a ball. It is Red",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 4,
+      "seller": 6
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Blue Tooth Speaker",
+      "price": 50.00,
+      "description": "Speaker that runs on blue tooth.",
+      "quantity": 5,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 4,
+      "seller": 7
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Bear Compound Bow",
+      "price": 450.00,
+      "description": "This is a hunting bow.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 5,
+      "seller": 4
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Long table",
+      "price": 17.00,
+      "description": "Big table for eating lots of food.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 5,
+      "seller": 1
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Boxing Gloves",
+      "price": 17.00,
+      "description": "Wear if you want to punch someone.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 5,
+      "seller": 1
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Big Couch",
+      "price": 17.00,
+      "description": "Very comfy.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 6,
+      "seller": 1
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Cowboy Hat",
+      "price": 17.00,
+      "description": "Yeehaw!",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 6,
+      "seller": 1
+    }
+  },
+  {
+    "model": "website.Product",
+    "fields": {
+      "title": "Spices Rack",
+      "price": 17.00,
+      "description": "Good organizer tool.",
+      "quantity": 3,
+      "city": "Nashville",
+      "date": "2017-05-22",
+      "category": 6,
+      "seller": 1
+    }
+  }
+]

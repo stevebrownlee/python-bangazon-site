@@ -1,0 +1,65 @@
+[
+  {
+    "model": "auth.user",
+    "fields": {
+      "username": "megacharme",
+      "first_name": "Meg",
+      "last_name": "Ducharme",
+      "password": "iheartcoffee"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "username": "deanthesmith",
+      "first_name": "Dean",
+      "last_name": "Smith",
+      "password": "rolltide"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "username": "brithebomb",
+      "first_name": "Bri",
+      "last_name": "Wyatt",
+      "password": "treekiller"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "username": "jtdawg",
+      "first_name": "James",
+      "last_name": "Tonkin",
+      "password": "i_am_a_meany"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "username": "koolkayla",
+      "first_name": "Kayla",
+      "last_name": "Brewer",
+      "password": "bitmoji4life"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "username": "jedilife",
+      "first_name": "Yoda",
+      "last_name": "Jedi",
+      "password": "theforce"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "username": "hellyeahhelana",
+      "first_name": "Helana",
+      "last_name": "Nosrat",
+      "password": "irock"
+    }
+  }  
+]

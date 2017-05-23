@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+
+    <h1>My Cart</h1>
+
+    <ol>
+    {% for product in products_in_cart %}
+        <a href="{% url 'website:single_product' product.id %}"><li>{{ product.title }} <button>Delete from Cart</button> </li></a> 
+    {% endfor %}
+    </ol>
+
+    <button>Complete Order</button> <!-- This does nothing right now  -->
+    <button>Cancel Order</button> <!-- This does nothing right now  -->
+
+    <!-- <a href="{% url 'website:list_products' %}">List Products</a> -->
+  </body>
+</html>
+

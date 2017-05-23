@@ -10,9 +10,10 @@
 
     <ol>
     {% for product in products %}
-        <li>{{ product.title }}</li>
+        <a href="{% url 'website:single_product' product.id %}"><li>{{ product.title }} - {{ product.description }}</li></a> 
     {% endfor %}
     </ol>
+    <button><a href="/">Go Home</a></button>
   </body>
 </html>
 

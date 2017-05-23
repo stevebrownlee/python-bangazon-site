@@ -47,7 +47,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2, null=False)
-    quantity = models.IntegerField(max_length=100)
+    quantity = models.IntegerField()
     # date_added = models.DateTimeField('Date Added')
 
 
@@ -73,7 +73,7 @@ class PaymentType(models.Model):
     returns: (None): N/A
     """   
     payment_type_name = models.CharField(max_length=15)
-    account_number = models.IntegerField(max_length=25)
+    account_number = models.IntegerField()
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     
 

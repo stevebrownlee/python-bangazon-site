@@ -1,4 +1,4 @@
-# Illegal Llamas Pull Request Template
+# Trashy Armadillos Pull Request Template
 
 ## Status
 Is this PR ready to be looked at by other group members? 

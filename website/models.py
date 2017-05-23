@@ -5,14 +5,14 @@ from django.db import models
 class Profile(User):
     """
     purpose: Creates Category table within database
-        Example useage:
+        Example useage: 
 
     author: Taylor Perkins, Justin Short
 
     args: models.Model: (NA): models class given by Django
 
     returns: (None): N/A
-    """
+    """      
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):  # __unicode__ on Python 2
@@ -22,15 +22,15 @@ class Profile(User):
 class Category(models.Model):
     """
     purpose: Creates Category table within database
-        Example useage:
+        Example useage: 
 
     author: Taylor Perkins, Justin Short
 
     args: models.Model: (NA): models class given by Django
 
     returns: (None): N/A
-    """
-    category_name = models.TextField()
+    """      
+    category_name = models.TextField()    
 
     def __str__(self):  # __unicode__ on Python 2
         return self.category_name
@@ -62,29 +62,28 @@ class Product(models.Model):
 
     def __str__(self):  # __unicode__ on Python 2
         return self.title
-      
+
     def get_products(self):
         print(dir(self))
         return Product.objects.filter(product_category=self)
 
 
-
 class PaymentType(models.Model):
     """
     purpose: Creates PaymentType table within database
-        Example useage:
+        Example useage: 
 
-    author: Taylor Perkins, Justin Short, Harry Epstein
+    author: Taylor Perkins, Justin Short
 
     args: models.Model: (NA): models class given by Django
 
     returns: (None): N/A
-    """
+    """       
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-    )
-    name = models.TextField(null=False, max_length=50)
+    )   
+    name = models.TextField(blank=True, null=False, max_length=50) 
     account_number = models.IntegerField(range(12, 20))
 
     def __str__(self):  # __unicode__ on Python 2
@@ -94,7 +93,7 @@ class PaymentType(models.Model):
 class Order(models.Model):
     """
     purpose: Creates Order table within database
-        Example useage:
+        Example useage: 
 
     author: Taylor Perkins, Justin Short
 
@@ -102,18 +101,18 @@ class Order(models.Model):
 
     returns: (None): N/A
     """
-
     buyer = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-    )
+    )   
     payment_type = models.ForeignKey(
         PaymentType,
         on_delete=models.CASCADE,
         null=True,
         blank=True
-    )
+    )   
     date_complete = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)  # This will get filled upon order completion
+
 
 class Product(models.Model):
     """

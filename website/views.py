@@ -192,7 +192,6 @@ def product_details(request, product_id):
 
     author: Taylor Perkins, Justin Short
 
-
     args: name(string) account type (credit card company); account_number (integer): 12 digit credit card number
 
     returns: (render): adds the payment type and account name to the database and returns the view of the account information view (/view_account)
@@ -206,7 +205,6 @@ def product_details(request, product_id):
         product = get_object_or_404(Product, pk=product_id)
         print(product)
 
-
     elif request.method == "POST":
         product = get_object_or_404(Product, pk=product_id)
         template_name = 'product/details.html'
@@ -219,23 +217,22 @@ def product_details(request, product_id):
 
             return HttpResponseRedirect('/view_order/{}'.format(open_order.id))
 
-
         except ObjectDoesNotExist:
             print("DoesNotExistError")
             open_order = Order(
                 buyer = request.user,
                 payment_type = None,
-                date_complete = None
-            )
+                date_complete = None)
             open_order.save()
             p_o = product.order.add(open_order)
             users_orders = Order.objects.filter(buyer=request.user)
             print(users_orders)
 
             return HttpResponseRedirect('/view_order/{}'.format(open_order.id))
-   
+
     return render(request, template_name, {
-    "product": product})
+        "product": product})
+
 
 def view_specific_product(request, category_id):
     """

@@ -64,7 +64,7 @@
        "title": "Jacket"
      }
    },
-   {  
+   {
      "model": "website.Product",
      "pk": 6,
      "fields": {
@@ -324,4 +324,4 @@
        "title": "Prada Bag"
      }
    }
-]
+ ]

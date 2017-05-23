@@ -35,34 +35,6 @@ class Category(models.Model):
     def __str__(self):  # __unicode__ on Python 2
         return self.category_name
 
-class Product(models.Model):
-    """
-    purpose: Creates Product table within database
-        Example useage:
-
-    author: Taylor Perkins, Justin Short
-
-    args: models.Model: (NA): models class given by Django
-
-    returns: (None): N/A
-    """
-    seller = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-    )
-    product_category = models.ForeignKey(
-        Category,
-        on_delete=models.CASCADE,
-    )
-    quantity = models.IntegerField(null=False)
-    description = models.TextField(null=False, max_length=500)
-    price = models.DecimalField(max_digits=5, decimal_places=2, null=False)
-    date_created = models.DateField(auto_now=True, auto_now_add=False)  # This auto generates date on creation
-    title = models.CharField(max_length=255)
-
-    def __str__(self):  # __unicode__ on Python 2
-        return self.title
-
     def get_products(self):
         print(dir(self))
         return Product.objects.filter(product_category=self)
@@ -100,7 +72,7 @@ class Order(models.Model):
     args: models.Model: (NA): models class given by Django
 
     returns: (None): N/A
-    """
+    """       
     buyer = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

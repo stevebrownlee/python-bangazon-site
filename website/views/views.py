@@ -134,4 +134,9 @@ def add_payment_type(request):
         )
         p.save()
         template_name = 'payment.html'
-        return render(request, template_name, {''})
+        return render(request, template_name, {'paymenttype': form_data})
+
+def list_payment_types(request):
+    payment_types = PaymentType.objects.all()
+    template_name = 'payment_list.html'
+    return render(request, template_name, {'payments': all_payment_types})

@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^sell$', sell_product, name='sell'),
     url(r'^products$', list_products, name='list_products'),
     url(r'^product_detail$', product_detail, name='product_detail'),
+    url(r'^payment_type$', add_payment_type, name='payment'),
 ]

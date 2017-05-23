@@ -13,7 +13,7 @@
 
 
   <li role="presentation"><a href="{% url 'website:index' %}">Home</a></li>
-  <li role="presentation"><a href="{% url 'website:category_list' %}">Product Categories</a></li>
+  <li role="presentation"><a href="{% url 'website:categories' %}">Product Categories</a></li>
   <li role="presentation"><a href="{% url 'website:sell' %}">Sell a Product</a></li>
   <li role="presentation"><a href="#"></a></li>
   <li role="presentation"><a href="{% url 'website:logout' %}">Logout</a></li>
@@ -28,7 +28,7 @@
     <h3>Bangazon says...you gotta log in pal</h3>
 {% endif %}
 <ol>
-<h3>Welcome to Bangazon, {{ user.first_name }}.</h3>
+Welcome to Bangazon {{ user.first_name }}.
 
     {% for product in products %}
         <li id="{{product.id}}"><a href="{% url 'website:product_detail' product.id %}">{{ product.title }}</a></li>

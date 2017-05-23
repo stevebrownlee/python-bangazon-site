@@ -2,9 +2,12 @@
 {% block content %}
     <h1>Product Categories</h1>
 
-    <ol>
     {% for category in categories %}
-        <li>{{ category.name }}</li>
+        <p>{{ category.name }} ({{ category.product.count }})</p>
+        <ol>
+        {% for product in category.get_top_three_products %}
+        <li id="{{product.id}}"><a href="{% url 'website:product_detail' product.id %}">{{ product.title }}</a></li>
+        {% endfor %}
+        </ol>
     {% endfor %}
-    </ol>
 {% endblock %}

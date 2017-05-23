@@ -16,6 +16,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
+    def get_top_three_products(self):
+        return Product.objects.filter(category=self)[:3]
+
+
 class Product(models.Model):
     """
     purpose: creates the product table in the database
@@ -26,6 +31,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete = models.CASCADE,
+        related_name = 'product'
     )
     seller = models.ForeignKey(
         User,

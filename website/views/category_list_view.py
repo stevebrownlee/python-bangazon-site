@@ -10,8 +10,12 @@ from website.models import Product, Category
 
 
 def category_list(request):
+    """
+    purpose: pulls up view listing alln product categories
+    author: Bri Wyatt 
+    args: request allows Django to see user session data
+    returns: Uses template from product/category_list.html and pulls  model data from the Category class to return the request with a view of that rendered text.
+    """
     categories = Category.objects.all()
     template_name = 'product/category_list.html'
     return render(request, template_name, {'categories': categories})
-
-

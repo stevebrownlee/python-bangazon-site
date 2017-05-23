@@ -117,3 +117,21 @@ def list_products(request):
     all_products = Product.objects.all()
     template_name = 'product/list.html'
     return render(request, template_name, {'products': all_products})
+
+def add_payment_type(request):
+    if request.method == 'GET':
+        payment_type_form == PaymentTypeForm()
+        template_name = 'payment.html'
+        return render(request, template_name, {'payment_type_form': payment_type_form})
+
+    elif request.method == 'POST':
+        form_data = request.POST
+        pt = PaymentType.objects.get(pk=form_data['paymenttype'])
+        p = PaymentType(
+            user_id=request.user,
+            name=pt,
+            account_number=form_data['account_number'],
+        )
+        p.save()
+        template_name = 'payment.html'
+        return render(request, template_name, {''})

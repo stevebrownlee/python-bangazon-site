@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^register$', register, name='register'),
     url(r'^sell$', sell_product, name='sell'),
     url(r'^products$', list_products, name='list_products'),
-    url(r'^product_detail$', product_detail, name='product_detail'),
+    #url(r'^product_detail$', product_detail, name='product_detail'),
+    url(r'^product_detail/(?P<product_id>.+?)/$', product_detail, name='product_detail'),
 ]

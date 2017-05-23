@@ -9,7 +9,8 @@ from website.models import Product, Category
 
 def index(request):
     template_name = 'index.html'
-    return render(request, template_name, {})
+    all_products = Product.objects.all().order_by('-id')[:20]
+    return render(request, template_name, {'products': all_products})
 
 
 # Create your views here.

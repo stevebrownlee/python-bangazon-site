@@ -29,5 +29,11 @@
 </ul>
     <h3>Bangazon says...you gotta log in pal</h3>
 {% endif %}
+<ol>
+    {% for product in products %}
+        <li id="{{product.id}}"><a href="{% url 'website:product_detail' product.id %}">{{ product.title }}</a></li>
+    {% endfor %}
+</ol>
+{% block content %}{% endblock %}
 </body>
 </html>

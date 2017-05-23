@@ -5,8 +5,9 @@ from django.shortcuts import get_object_or_404, render
 from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 
-from website.forms import UserForm, ProductForm
-from website.models import Product, Category, Order
+
+from website.forms import UserForm, ProductForm, AddPaymentForm
+from website.models import Product, Category, PaymentType, Order
 
 def index(request):
     template_name = 'index.html'
@@ -122,6 +123,36 @@ def sell_product(request):
         p.save()
         return HttpResponseRedirect('product_details/{}'.format(p.id))
 
+def add_payment_type(request):
+    '''
+    purpose: Allows user to add a payment type to their account, from a submenu in the acount information view
+
+        For an example, visit /product_details/1/ to see a view on the first product created
+        displaying title, description, quantity, price/unit, and "Add to order" button
+
+    author: Harry Epstein
+
+    args: name: (string), acount number of credit card
+
+    returns: (render): a view of of the request, template to use, and product obj
+    '''
+    if request.method == 'GET':
+        add_payment_form = AddPaymentForm()
+        template_name = 'account/add_payment.html'
+        return render(request, template_name, {'add_payment_form': add_payment_form})
+
+    elif request.method == 'POST':
+        form_data = request.POST
+
+        p = PaymentType(
+            user = request.user,
+            name = form_data['name'],
+            account_number = form_data['account_number']
+        )
+        p.save()
+        template_name = 'account/add_payment.html'
+        return HttpResponseRedirect('/view_account')
+    return render(request, template_name)
 def list_products(request):
     template_name = 'product/list.html'
     return render(request, template_name)
@@ -161,6 +192,11 @@ def product_details(request, product_id):
 
     author: Taylor Perkins, Justin Short
 
+
+    args: name(string) account type (credit card company); account_number (integer): 12 digit credit card number
+
+    returns: (render): adds the payment type and account name to the database and returns the view of the account information view (/view_account)
+
     args: product_id: (integer): id of product we are viewing
 
     returns: (render): a view of of the request, template to use, and product obj
@@ -197,7 +233,7 @@ def product_details(request, product_id):
             print(users_orders)
 
             return HttpResponseRedirect('/view_order/{}'.format(open_order.id))
-
+   
     return render(request, template_name, {
     "product": product})
 
@@ -236,9 +272,9 @@ def edit_payment_type(request):
     template_name = 'account/edit_payment.html'
     return render(request, template_name)
 
-def add_payment_type(request):
-    template_name = 'account/add_payment.html'
-    return render(request, template_name)
+# def add_payment_type(request):
+#     template_name = 'account/add_payment.html'
+#     return render(request, template_name)
 
 def view_order(request, product_id):
 

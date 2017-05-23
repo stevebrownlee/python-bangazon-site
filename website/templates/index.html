@@ -30,8 +30,9 @@
           {% if user.is_authenticated %}
           <li><a href="{% url 'website:sell' %}">
           Sale Your Product</a></li>
-          {% endif %}
           <li><a href="">Shopping Cart</a></li>
+          <li><a href="{%url 'website:view_account' %}">Account</a></li>
+          {% endif %}
 
       </ul>
      {% endblock %}
@@ -56,10 +57,10 @@
 
         author: Miriam Rozenbaum
 
-        args: product_id: (integer): id of product that is clicked, in order to show specific product details 
+        args: product_id: (integer): id of product that is clicked, in order to show specific product details
 
         returns: (integer): id of product clicked
-        !-->    
+        !-->
         <h3> Top 20 Products: {{Product}}</h3>
         <div>
           <ol>

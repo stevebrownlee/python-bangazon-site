@@ -126,10 +126,9 @@ def add_payment_type(request):
 
     elif request.method == 'POST':
         form_data = request.POST
-        pt = PaymentType.objects.get(pk=form_data['paymenttype'])
         p = PaymentType(
             user_id=request.user,
-            name=pt,
+            name=form_data['name'],
             account_number=form_data['account_number'],
         )
         p.save()

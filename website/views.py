@@ -159,7 +159,7 @@ def product_details(request, product_id):
         For an example, visit /product_details/1/ to see a view on the first product created
         displaying title, description, quantity, price/unit, and "Add to order" button
 
-    author: Taylor Perkins,Justin Short
+    author: Taylor Perkins, Justin Short
 
     args: product_id: (integer): id of product we are viewing
 

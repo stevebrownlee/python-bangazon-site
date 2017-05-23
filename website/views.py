@@ -192,7 +192,7 @@ def product_details(request, product_id):
                 date_complete = None
             )
             open_order.save()
-            p_o = product.order.create(open_order)
+            p_o = product.order.add(open_order)
             users_orders = Order.objects.filter(buyer=request.user)
             print(users_orders)
 

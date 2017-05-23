@@ -18,6 +18,13 @@ class Category(models.Model):
 
 
     def get_top_three_products(self):
+    """
+    purpose: creates a top 3 list of products in a product category
+    author: Bri Wyatt 
+    returns: a list of the first three products in the 
+    category. Each text item is a hyperlink 
+    that connects to that product's detail page 
+    """
         return Product.objects.filter(category=self)[:3]
 
 

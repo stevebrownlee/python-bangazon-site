@@ -24,6 +24,17 @@ class Product(models.Model):
     quantity = models.IntegerField()
 
 
+class Customer(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    user_name = models.CharField(max_length=30)
+    email_address = models.CharField(max_length=30)
+    password = models.CharField(max_length=30)
+
+
+class PaymentType(models.Model):
+    
+
 
 class Order(models.Model):
     order_date = models.DateTimeField('Order Date')
@@ -39,6 +50,8 @@ class Order(models.Model):
 class ProductOrder(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
+
+
 
 
 

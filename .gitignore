@@ -6,3 +6,5 @@ bin
 obj
 *.db
 *.sqlite3
+website/migrations
+.idea/

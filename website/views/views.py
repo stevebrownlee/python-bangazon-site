@@ -4,8 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.template import RequestContext
 
-from website.forms import UserForm, ProductForm
-from website.models import Product, Category
+from website.forms import UserForm, ProductForm, PaymentTypeForm
+from website.models import Product, Category, PaymentType
 
 def index(request):
     template_name = 'index.html'
@@ -118,3 +118,25 @@ def list_products(request):
     all_products = Product.objects.all()
     template_name = 'product/list.html'
     return render(request, template_name, {'products': all_products})
+
+def add_payment_type(request):
+    if request.method == 'GET':
+        payment_type_form = PaymentTypeForm()
+        template_name = 'payment.html'
+        return render(request, template_name, {'payment_type_form': payment_type_form})
+
+    elif request.method == 'POST':
+        form_data = request.POST
+        p = PaymentType(
+            user=request.user,
+            name=form_data['name'],
+            account_number=form_data['account_number'],
+        )
+        p.save()
+        template_name = 'payment.html'
+        return render(request, template_name, {'paymenttype': form_data})
+
+# def list_payment_types(request):
+#     payment_types = PaymentType.objects.all()
+#     template_name = 'payment_list.html'
+#     return render(request, template_name, {'payments': all_payment_types})

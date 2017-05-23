@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^products$', list_products, name='list_products'),
     #url(r'^product_detail$', product_detail, name='product_detail'),
     url(r'^product_detail/(?P<product_id>.+?)/$', product_detail, name='product_detail'),
+    url(r'^paymenttype$', add_payment_type, name='payment_type'),
 ]

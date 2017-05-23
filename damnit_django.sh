@@ -3,4 +3,4 @@ find . -path "/website/migrations/*.pyc"  -delete; #deletes all of the .pyc file
 rm db.sqlite3; #deletes the database file.
 python manage.py makemigrations website; #creates the migration.
 python manage.py migrate; #runs the migration.  This will delete all of the data in your database.
-python manage.py loaddata category.json #loads the data from each .json file in sequential order.
+python manage.py loaddata category.json user.json product.json #loads the data from each .json file in sequential order.

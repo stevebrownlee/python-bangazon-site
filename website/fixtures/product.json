@@ -64,7 +64,7 @@
        "title": "Jacket"
      }
    },
-      {
+   {  
      "model": "website.Product",
      "pk": 6,
      "fields": {
@@ -129,7 +129,7 @@
        "title": "Prada Boots"
      }
    },
-      {
+  {
      "model": "website.Product",
      "pk": 11,
      "fields": {
@@ -194,7 +194,7 @@
        "title": "Diesel Jeans"
      }
    },
-      {
+  {
      "model": "website.Product",
      "pk": 16,
      "fields": {
@@ -259,7 +259,7 @@
        "title": "Converse Shoes"
      }
    },
-      {
+  {
      "model": "website.Product",
      "pk": 21,
      "fields": {

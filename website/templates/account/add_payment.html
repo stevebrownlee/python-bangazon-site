@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <h1>Add Payment Type</h1>
+
+    <form action="{% url 'website:add_payment_type' %}" method="post">
+      {% csrf_token %}
+      {{ add_payment_form.as_p }}
+      <input type="submit" value="Add Payment Type" url/>
+    </form>
+
+
+  </body>
+</html>

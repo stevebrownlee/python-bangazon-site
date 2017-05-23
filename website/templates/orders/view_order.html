@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <h1>View Order (NOT CHECKOUT PAGE: where you can remove and clicked checkout button)</h1>
+
+    <ol>
+    {% for product in products %}
+        <li>{{ product.title }}</li>
+    {% endfor %}
+    </ol>
+  </body>
+</html>

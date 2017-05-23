@@ -1,0 +1,11 @@
+[
+   {
+     "model": "website.PaymentType",
+     "pk": 1,
+     "fields": {
+       "user": 1,
+       "name": "Visa",
+       "account_number": 123456789012345
+     }
+   }
+]

@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <h1>All Categories View</h1>    
+      
+      {% for category in all_categories %}      
+      {% with cat_products=category.get_products %}
+        <h2><a href="{% url 'website:product_category_view' category_id=category.id %}">{{ category.category_name }} ({{ cat_products|length }})</a></h2>        
+        <ol>
+          {% for product in cat_products|slice:":3" %}
+            <li><a href="{% url 'website:product_details' product_id=product.id %}">{{product.title}}</a></li>
+          {% endfor %}          
+        </ol>
+      {% endwith %}
+      {% endfor %}
+      
+  </body>
+</html>

@@ -1,0 +1,72 @@
+[
+  {
+    "model": "website.Category",
+    "pk": 1,
+    "fields": {
+      "name": "Electronics"
+    }
+  },
+  {
+    "model": "website.Category",
+    "pk": 2,
+    "fields": {
+      "name": "Automotive"
+    }
+  },
+  {
+    "model": "website.Category",
+    "pk": 3,
+    "fields": {
+      "name": "Household Products"
+    }
+  },
+  {
+    "model": "website.Category",
+    "pk": 4,
+    "fields": {
+      "name": "Food and Beverage"
+    }
+  },
+  {
+    "model": "website.Category",
+    "pk": 5,
+    "fields": {
+      "name": "Furniture"
+    }
+  },
+  {
+    "model": "website.Category",
+    "pk": 6,
+    "fields": {
+      "name": "Collectibles"
+    }
+  },
+  {
+    "model": "website.Category",
+    "pk": 7,
+    "fields": {
+      "name": "Jewelry"
+    }
+  },
+  {
+    "model": "website.Category",
+    "pk": 8,
+    "fields": {
+      "name": "General"
+    }
+  },
+  {
+    "model": "website.Category",
+    "pk": 9,
+    "fields": {
+      "name": "Sporting Goods"
+    }
+  },
+  {
+    "model": "website.Category",
+    "pk": 10,
+    "fields": {
+      "name": "Video Games"
+    }
+  }
+]

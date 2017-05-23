@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+{% block content %}
+        {% if user.is_authenticated %}
+        <h1>Add A Payment Type</h1>
+        <h4> Payment Name: {{paymenttype.name}}
+        <form id="payment_type_form" method="post" action="{% url 'website:payment_type' %}">
+        {% endif %}
+{% endblock %}

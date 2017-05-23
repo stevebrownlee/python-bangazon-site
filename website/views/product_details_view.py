@@ -4,14 +4,13 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
 from website.forms import ProductForm
-from website.forms import UserForm
-from website.models import Product
+from website.forms import UserForm, Product
 
 
 
 def product_detail(request, product_id):
     """
-    purpose: gets a single product to be viewed on product_detail.html
+    purpose: gets a single product to be viewed on product/product_detail.html
     author: James Tonkin
     args: request allows Django to see user session data
           product_id is used to generate the individual product

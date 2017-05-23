@@ -9,9 +9,12 @@
     <h1>Edit Account</h1>
 
     <ol>
-    {% for product in products %}
-        <li>{{ product.title }}</li>
+    {% for payment_type in payment_types %}
+        <li>{{ payment_type.type }}</li>
+        <li>{{ payment_type.account_number }}</li>
     {% endfor %}
+    <li><a href="{%url 'website:add_payment_type' %}">Add Payment</a></li>
+    <li><a href="{%url 'website:edit_payment_type' %}">Edit Payment</a></li>
     </ol>
   </body>
 </html>

@@ -111,7 +111,16 @@ def sell_product(request):
 
 def add_payment_type(request):
     '''
-    THIS IS THE THING THAT I AM CURRENTLY WORKING ON: HARRY EPSTEIN
+    purpose: Allows user to add a payment type to their account, from a submenu in the acount information view
+
+        For an example, visit /product_details/1/ to see a view on the first product created
+        displaying title, description, quantity, price/unit, and "Add to order" button
+
+    author: Harry Epstein
+
+    args: name: (string), acount number of credit card
+
+    returns: (render): a view of of the request, template to use, and product obj
     '''
     if request.method == 'GET':
         add_payment_form = AddPaymentForm()
@@ -122,14 +131,14 @@ def add_payment_type(request):
         form_data = request.POST
 
         p = PaymentType(
-            account_holder = request.user,
+            user = request.user,
             name = form_data['name'],
             account_number = form_data['account_number']
         )
         p.save()
         template_name = 'account/add_payment.html'
-        return render(request, template_name)
-
+        return HttpResponseRedirect('/view_account')
+    return render(request, template_name)
 def list_products(request):
     template_name = 'product/list.html'
     return render(request, template_name)
@@ -149,15 +158,14 @@ def product_details(request, product_id):
 
     author: Taylor Perkins
 
-    args: product_id: (integer): id of product we are viewing
+    args: name(string) account type (credit card company); account_number (integer): 12 digit credit card number
 
-    returns: (render): a view of of the request, template to use, and product obj
+    returns: (render): adds the payment type and account name to the database and returns the view of the account information view (/view_account)
     """
     template_name = 'product/details.html'
     product = get_object_or_404(Product, pk=product_id)
     print(product)
-    return render(request, template_name, {
-        "product": product})
+    return render(request, template_name, {"product": product})
 
 def product_category(request):
     template_name = 'product/category.html'
@@ -175,9 +183,9 @@ def edit_payment_type(request):
     template_name = 'account/edit_payment.html'
     return render(request, template_name)
 
-def add_payment_type(request):
-    template_name = 'account/add_payment.html'
-    return render(request, template_name)
+# def add_payment_type(request):
+#     template_name = 'account/add_payment.html'
+#     return render(request, template_name)
 
 def view_order(request):
     template_name = 'orders/view_order.html'

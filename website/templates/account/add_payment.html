@@ -11,7 +11,7 @@
     <form action="{% url 'website:add_payment_type' %}" method="post">
       {% csrf_token %}
       {{ add_payment_form.as_p }}
-      <input type="submit" value="Add Payment Type" />
+      <input type="submit" value="Add Payment Type" url/>
     </form>
 
 

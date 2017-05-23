@@ -18,5 +18,6 @@ def product_detail(request, product_id):
     returns: Combines product_detail.html with product dictionary and returns the request with that rendered text.
     """
 
-    product = get_object_or_404(models.Product, pk=product_id)
-    return render(request, 'product_detail.html', {'product': product})
+    product = Product.objects.get(pk=product_id)
+    template_name = 'product/product_detail.html'
+    return render(request, template_name, {'product': product})

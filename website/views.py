@@ -90,6 +90,16 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 def sell_product(request):
+    """
+    purpose: produce a form for the user to create a product to sell
+
+    author: casey dailey
+
+    args: request
+
+    returns: redirect to detail view for product created
+    """
+
     if request.method == 'GET':
         product_form = ProductForm()
         template_name = 'product/create.html'
@@ -104,10 +114,12 @@ def sell_product(request):
             description = form_data['description'],
             price = form_data['price'],
             quantity = form_data['quantity'],
+
+            #create an instance of category of where category_name = the user's choice
+            product_category = Category.objects.get(category_name=form_data['product_category'])
         )
         p.save()
-        template_name = 'product/details.html'
-        return render(request, template_name)
+        return HttpResponseRedirect('product_details/{}'.format(p.id))
 
 def add_payment_type(request):
     '''
@@ -144,9 +156,25 @@ def list_products(request):
     return render(request, template_name)
 
 def product_categories(request):
-    all_products = Product.objects.all()
+    all_categories = Category.objects.all()
+    all_products = Product.objects.all().order_by('-id')
+    top_three_per_cat = dict()
+
+    for product in all_products:
+        print(product.product_category.id)
+        try:
+            cat_product = top_three_per_cat[product.product_category.id]
+            if len(cat_product) < 3:
+                cat_product.add(product)
+                print(top_three_per_cat)
+        except KeyError:
+            top_three_per_cat[product.product_category.id] = set()
+            top_three_per_cat[product.product_category.id].add(product)
+            print(top_three_per_cat)
+
+    print(top_three_per_cat)
     template_name = 'product/categories.html'
-    return render(request, template_name, {'products': all_products})
+    return render(request, template_name, {'all_categories': all_categories, 'product': all_products, 'top_three_per_cat': top_three_per_cat})
 
 def product_details(request, product_id):
     """
@@ -158,18 +186,47 @@ def product_details(request, product_id):
 
     author: Taylor Perkins
 
+
     args: name(string) account type (credit card company); account_number (integer): 12 digit credit card number
 
     returns: (render): adds the payment type and account name to the database and returns the view of the account information view (/view_account)
+
+    args: product_id: (integer): id of product we are viewing
+
+    returns: (render): a view of of the request, template to use, and product obj
     """
+    
     template_name = 'product/details.html'
     product = get_object_or_404(Product, pk=product_id)
     print(product)
     return render(request, template_name, {"product": product})
 
-def product_category(request):
+    
+    return render(request, template_name, {
+        "product": product})
+
+def view_specific_product(request, category_id):
+    """
+    purpose: Allows user to view a specific category view, which contains all products directly related to the given category
+
+        For an example, visit /product_category/1 to see a view on the first category created
+        dispaying all products related. All products also have links sending you directly to their specific page
+
+    author: Taylor Perkins
+
+    args: category_id: (integer): id of category we are viewing
+
+    returns: (render): a view of of the request, template to use, and product obj
+                (category): category we are viewing
+                (products): all products related to given category
+    """
     template_name = 'product/category.html'
-    return render(request, template_name)
+    category = get_object_or_404(Category, pk=category_id)    
+    products = Product.objects.filter(product_category=category)    
+    print(products)
+    return render(request, template_name, {
+        "category": category,
+        "products": products})
 
 def view_account(request):
     template_name = 'account/view_account.html'

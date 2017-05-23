@@ -1,0 +1,11 @@
+[
+   {
+     "model": "website.Order",
+     "pk": 1,
+     "fields": {
+       "buyer": 1,
+       "payment_type": 1,
+       "date_complete": null
+     }
+   }
+]

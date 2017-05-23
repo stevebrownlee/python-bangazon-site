@@ -8,10 +8,12 @@
   <body>
     <h1>Single Selected Category View</h1>
 
-    <ol>
-    {% for product in products %}
-        <li>{{ product.title }}</li>
+    <h2>{{ category.category_name}}</h2>
+    {% for product in products %}      
+        <h3><a href="{% url 'website:product_details' product_id=product.id %}">{{ product.title }}</a></h3>
+        <p>Quantity: {{ product.quantity }}</p>
+        <p>Price/Unit: {{ product.price }}</p>
+        <hr>
     {% endfor %}
-    </ol>
   </body>
 </html>

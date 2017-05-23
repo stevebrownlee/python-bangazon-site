@@ -1,11 +1,5 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Bangazon</title>
-  </head>
-  <body>
+{% extends "index.html" %}
+{% block content %}
     <h1>Product Categories</h1>
 
     <ol>
@@ -13,5 +7,4 @@
         <li>{{ category.name }}</li>
     {% endfor %}
     </ol>
-  </body>
-</html>
+{% endblock %}

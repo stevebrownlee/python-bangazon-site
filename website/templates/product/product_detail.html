@@ -1,11 +1,5 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Bangazon</title>
-</head>
-<body>
+{% extends "index.html" %}
+{% block content %}
 	<h1>Product title: {{product.title}}</h1>
 	<h4>Product Description: {{product.description}}</h4>
 	<h4>Product Quantity: {{product.quantity}}</h4>
@@ -13,5 +7,4 @@
 	{% if user.is_authenticated %}
 	<input type="submit" value="Add to Order" />
 	{% endif %}
-</body>
-</html>
+{% endblock %}

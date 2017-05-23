@@ -81,7 +81,7 @@ class PaymentType(models.Model):
         User,
         on_delete=models.CASCADE,
     )
-    name = models.TextField(blank=True, null=False, max_length=50)
+    name = models.TextField(null=False, max_length=50)
     account_number = models.IntegerField(range(12, 20))
 
     def __str__(self):  # __unicode__ on Python 2

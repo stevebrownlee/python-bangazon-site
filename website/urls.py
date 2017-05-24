@@ -2,6 +2,7 @@ from django.conf.urls import url
 from website.views.views import *
 from website.views.product_details_view import *
 from website.views.category_list_view import *
+from website.views.single_category import *
 
 app_name = "website"
 urlpatterns = [

@@ -5,10 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
 from website.forms import ProductForm
 from website.forms import UserForm
-from website.models import Product
-from website.models import Category
-
-
+from website.models import Product, Category
 
 def single_category(request, category_id):
     """

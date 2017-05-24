@@ -1,10 +1,10 @@
 {% extends "index.html" %}
 {% block content %}
 
-<h2>{{category.name}}</h2>
+<h2><a href="{% url 'website:single_category' category.id %}">{{category.name}}</a></h2>
 <ol>
-    {% for product in products %}
-        <li id="{{product.id}}"><a href="{% url 'website:product_detail' product.id %}">{{ product.title }}</a> {{ product.quantity}} {{product.price}}</li>
+    {% for product in category.get_products_from_single_cat %}
+        <li id="{{product.id}}"><a href="{% url 'website:product_detail' product.id %}">{{ product.title }}</a> ({{ product.quantity}}) {{product.price}}</li>
     {% endfor %}
 </ol>
 {% endblock %}

@@ -10,12 +10,22 @@
 
     <ol>
     {% for product in products %}
+
         <li>{{ product}}</li>
-    {% endfor %}
+        <form method="post">
+          {% csrf_token %}
+          <h1> {{product.id}} </h1>
+          <input type="hidden" name="product" value="{{product.id}}">
+          <input type="submit" name="delete" value="delete">
+
+        </form>
+        {% endfor %}
+
+
     </ol>
     <form method="post">
-    {% csrf_token %} 
-    <input type="submit" value="checkout">
-    </form>  
+    {% csrf_token %}
+    <input type="submit" name="checkout" value="checkout">
+    </form>
   </body>
 </html>

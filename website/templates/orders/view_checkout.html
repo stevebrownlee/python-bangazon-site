@@ -10,8 +10,22 @@
 
     <ol>
     {% for product in products %}
-        <li>{{ product.title }}</li>
+        <li>{{ product }}</li>
     {% endfor %}
     </ol>
+
+    <h2>Please Select a Payment Type:</h2>
+
+    <form method="post">
+    {% csrf_token %} 
+        <select name="select">
+          {% for payment_type in payment_types %}
+          {{ complete_order_form.as_p }}
+          <option value="{{payment_type.id}}">{{payment_type.name}}</option>
+          {% endfor %}
+        </select>
+   
+    <input type="submit" value="done">
+    </form>
   </body>
 </html>

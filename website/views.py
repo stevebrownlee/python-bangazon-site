@@ -281,8 +281,13 @@ def edit_payment_type(request):
 
 @login_required
 def view_order(request, order_id):
-    user_orders = Order.objects.get(pk=order_id)
-
+    """
+    purpose: present user order and handle interaction with cart
+    author: casey dailey
+    args: request, order_id
+    returns: 
+    """
+    user_order = Order.objects.get(pk=order_id)
     if request.method == 'GET':
         products = UserOrder.objects.filter(order=user_orders)
         template_name = 'orders/view_order.html'
@@ -292,6 +297,24 @@ def view_order(request, order_id):
     elif request.method == 'POST':
         return HttpResponseRedirect('/view_checkout/{}'.format(order_id))
 
+@login_required
 def view_checkout(request, order_id):
-    template_name = 'orders/view_checkout.html'
-    return render(request, template_name)
+    if request.method == 'GET':
+        products = Product.objects.filter(order=order_id)
+        payment_types = PaymentType.objects.filter(user=request.user)
+        template_name = 'orders/view_checkout.html'
+        return render(request, template_name, {
+            "products": products,
+            "payment_types": payment_types
+            })
+    elif request.method == 'POST':
+        payment_type = PaymentType.objects.get(pk=request.POST.get('select'))
+        user_order = Order.objects.get(pk=order_id)
+        user_order.payment_type = payment_type
+        user_order.save()
+        return HttpResponseRedirect('/order_complete/{}'.format(order_id))
+
+def order_complete(request, order_id):
+    if request.method == 'GET':
+        template_name = 'orders/order_complete.html'
+        return render(request, template_name)

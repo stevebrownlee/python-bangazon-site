@@ -20,3 +20,4 @@ class AddPaymentForm(forms.ModelForm):
     model = PaymentType
     fields = ('name','account_number')
 
+

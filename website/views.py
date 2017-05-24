@@ -275,6 +275,9 @@ def edit_account(request):
 def edit_payment_type(request):
     payment_types = PaymentType.objects.filter(user=request.user)
     template_name = 'account/edit_payment.html'
+    if request.method == "POST":
+       payment_type = PaymentType.objects.get(pk=request.POST.get('payment_type'))
+       payment_type.delete()
     return render(request, template_name, {
         "payment_types": payment_types
         })

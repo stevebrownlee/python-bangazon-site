@@ -16,4 +16,5 @@ urlpatterns = [
     #url(r'^product_detail$', product_detail, name='product_detail'),
     url(r'^product_detail/(?P<product_id>.+?)/$', product_detail, name='product_detail'),
     url(r'^paymenttype$', add_payment_type, name='payment_type'),
+    url(r'^paymentlist$', all_payment_types, name='paymentlist'),
 ]

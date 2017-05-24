@@ -128,7 +128,7 @@ def list_products(request):
 
 def add_payment_type(request):
 
-     """
+    """
     purpose: add a payment type to the data base
     author: Dean Smith, Helana Nosrat
     args: request allows Django to see user session data
@@ -150,7 +150,23 @@ def add_payment_type(request):
         template_name = 'payment.html'
         return render(request, template_name, {'paymenttype': form_data})
 
-# def list_payment_types(request):
-#     payment_types = PaymentType.objects.all()
-#     template_name = 'payment_list.html'
-#     return render(request, template_name, {'payments': all_payment_types})
+def all_payment_types(request):
+        user = request.user
+        all_payment_types = PaymentType.objects.filter(user_id=user.id)
+        template_name = 'list_payment.html'
+        payment_type_dict = {'all_payment_types': all_payment_types}
+        return render(request, template_name, payment_type_dict)
+
+    # elif request.method == 'POST':
+    #     form_data = request.POST
+    #     p = PaymentType(
+    #         user=request.user,
+    #         name=form_data['name'],
+    #         account_number=form_data['account_number'],
+    #     )
+    #     p.save()
+    #     template_name = 'payment.html'
+    #     return render(request, template_name, {'paymenttype': form_data})
+    
+
+   

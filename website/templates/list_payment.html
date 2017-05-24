@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block content %}
+    <h1>My Payments</h1>
+
+    {% for payment_type in all_payment_types %}
+        <ul>
+        <li id="{{payment_type.id}}">{{ payment_type.name }} - {{payment_type.account_number}}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
+

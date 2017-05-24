@@ -284,7 +284,7 @@ def edit_payment_type(request):
 
 @login_required
 def view_order(request, order_id):
-      """
+    """
     purpose: present user order and handle interaction with cart
     author: casey dailey
     args: request, order_id

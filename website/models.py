@@ -61,31 +61,6 @@ class PaymentType(models.Model):
     # def __str__(self):  # __unicode__ on Python 2
     #     return self.name
 
-
-class Order(models.Model):
-    """
-    purpose: Creates Order table within database
-        Example useage: 
-
-    author: Taylor Perkins, Justin Short
-
-    args: models.Model: (NA): models class given by Django
-
-    returns: (None): N/A
-    """       
-    buyer = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-    )   
-    payment_type = models.ForeignKey(
-        PaymentType,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
-    )   
-    date_complete = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)  # This will get filled upon order completion
-
-
 class Product(models.Model):
     """
     purpose: Creates Product table within database
@@ -96,19 +71,18 @@ class Product(models.Model):
     args: models.Model: (NA): models class given by Django
 
     returns: (None): N/A
-    """    
-    order = models.ManyToManyField(Order)  
+    """        
     seller = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )
-    #django will display a dropdown with these choices
+    # django will display a dropdown with these choices
     CATEGORY_CHOICES = (
-    ('electronics','ELECTRONICS'),
-    ('sports', 'SPORTS'),
-    ('home','HOME'),
-    ('general','GENERAL'),
-    ('clothing','CLOTHING'),
+        ('electronics' , 'ELECTRONICS'),
+        ('sports' , 'SPORTS'),
+        ('home' , 'HOME'),
+        ('general' , 'GENERAL'),
+        ('clothing' , 'CLOTHING')
     )
     product_category = models.ForeignKey(
         Category,
@@ -123,5 +97,49 @@ class Product(models.Model):
 
     def __str__(self):  # __unicode__ on Python 2
         return self.title
+
+class Order(models.Model):
+    """
+    purpose: Creates Order table within database
+        Example useage: 
+
+    author: Taylor Perkins, Justin Short
+
+    args: models.Model: (NA): models class given by Django
+
+    returns: (None): N/A
+    """      
+    orders = models.ManyToManyField(Product, through="UserOrder")   
+    buyer = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )   
+    payment_type = models.ForeignKey(
+        PaymentType,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )   
+    date_complete = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)  # This will get filled upon order completion
+
+
+class UserOrder(models.Model):
+    """
+    purpose: Creates Intermediate table between Order and Product within database
+        Example useage: 
+
+    author: Taylor Perkins
+
+    args: models.Model: (NA): models class given by Django
+
+    returns: (None): N/A
+    """       
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.product.title
+
+
 
 

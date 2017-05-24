@@ -1,10 +1,10 @@
 [
    {
-     "model": "website.Product_Order",
+     "model": "website.Order_Product",
      "pk": 1,
      "fields": {
-       "product": 1,
-       "order": 1       
+       "order": 1,
+       "product": 1       
      }
    }
 ]

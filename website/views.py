@@ -135,7 +135,7 @@ def add_payment_type(request):
     args: name: (string), acount number of credit card
 
     returns: (render): a view of of the request, template to use, and product obj
-    '''
+    ''' 
     if request.method == 'GET':
         add_payment_form = AddPaymentForm()
         template_name = 'account/add_payment.html'
@@ -265,13 +265,13 @@ def edit_account(request):
     template_name = 'account/edit_account.html'
     return render(request, template_name)
 
+# @login_required
 def edit_payment_type(request):
+    payment_types = PaymentType.objects.filter(user=request.user)
     template_name = 'account/edit_payment.html'
-    return render(request, template_name)
-
-# def add_payment_type(request):
-#     template_name = 'account/add_payment.html'
-#     return render(request, template_name)
+    return render(request, template_name, {
+        "payment_types": payment_types
+        })
 
 @login_required
 def view_order(request, order_id):

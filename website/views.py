@@ -273,11 +273,18 @@ def edit_payment_type(request):
 #     template_name = 'account/add_payment.html'
 #     return render(request, template_name)
 
-def view_order(request, product_id):
+@login_required
+def view_order(request, order_id):
+    user_order = Order.objects.get(pk=order_id)
+    if request.method == 'GET':
+        products = Product.objects.filter(order=order_id)
+        template_name = 'orders/view_order.html'
+        return render(request, template_name, {
+            "products": products
+            })
+    elif request.method == 'POST':
+        return HttpResponseRedirect('/view_checkout/{}'.format(order_id))
 
-    template_name = 'orders/view_order.html'
-    return render(request, template_name)
-
-def view_checkout(request):
+def view_checkout(request, order_id):
     template_name = 'orders/view_checkout.html'
     return render(request, template_name)

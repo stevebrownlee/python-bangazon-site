@@ -10,8 +10,12 @@
 
     <ol>
     {% for product in products %}
-        <li>{{ product.title }}</li>
+        <li>{{ product}}</li>
     {% endfor %}
     </ol>
+    <form method="post">
+    {% csrf_token %} 
+    <input type="submit" value="checkout">
+    </form>  
   </body>
 </html>

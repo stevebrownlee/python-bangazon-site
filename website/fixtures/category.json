@@ -1,0 +1,37 @@
+[
+  {
+    "pk": 1,
+    "model": "website.Category",
+    "fields": {
+      "category_name": "electronics"      
+    }
+  },
+  {
+    "pk": 2,
+    "model": "website.Category",
+    "fields": {
+      "category_name": "sports"      
+    }
+  },
+  {
+    "pk": 3,
+    "model": "website.Category",
+    "fields": {
+      "category_name": "home"      
+    }
+  },
+  {
+    "pk": 4,
+    "model": "website.Category",
+    "fields": {
+      "category_name": "general"      
+    }
+  },
+  {
+    "pk": 5,
+    "model": "website.Category",
+    "fields": {
+      "category_name": "clothing"      
+    }
+  }
+]

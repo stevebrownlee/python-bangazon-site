@@ -1,34 +1,75 @@
-# Welcome to Bangazon
+# Djangazon!! Bangazon on Django
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-This web application is the source code for the Bangazon e-commerce web site. It is powered by Python and Django.
+A django webapp where users can buy and sell products!
 
-Students, you are inheriting a basic implementation that provides the following features:
+## Table of Contents
 
-1. User registration 
-1. User login 
-1. User logout 
-1. Adding a product 
-1. Listing products
+- [About](#about)
+- [Installation](#installation)
+- [Usage](#usage)   
+- [Contribute](#contribute)
+- [Credits](#credits)
+- [License](#license)
 
-Please consult the backlog of issues and work with your product owner to implement the top priority tickets for your sprints.
+## About
+We are.. The Trashy Armadillos. Agile AF, and Donut Mondays. That's just how we role.
+We give you.. Djangazon
 
-## To begin work
+### Prerequisites
+Install [pip](https://packaging.python.org/installing/)
 
-1. Fork this repository into your team's Github organization.
-1. Alert your manager when this is complete and all backlog issues will be imported into your fork.
-1. Each teammate should clone the repository.
-1. In the `djangazon` directory that gets created, run the migrations with `python manage.py migrate`
+Install [Python 3.6](https://www.python.org/downloads/)
 
-## Helpful Resources
+Install Django and REST framework:
+```
+pip install django
+pip install djangorestframework
+```
 
-### Django Models and Migrations
+## Installation
+```
+git clone https://github.com/Trashy-Armadillos/djangazon.git
+cd djangazon
+```
+Setting up the database:
 
-Using the requirements above create a [model](https://docs.djangoproject.com/en/1.10/topics/db/models/) for each resource, and use [migrations](https://docs.djangoproject.com/en/1.10/topics/migrations/) to ensure your database structure is up to date.
+```
+./refresh_database.sh
+```
+Run project in browser:
 
-### Templates
+```
+python manage.py runserver
+```
 
-[Django template language](https://docs.djangoproject.com/en/1.10/ref/templates/language/)
 
-### Form Helpers
 
-Django, like Angular, has many built-in [helper tags and filters](https://docs.djangoproject.com/en/1.10/ref/templates/builtins/) when building the site templates. We strongly recommend reading this documentation while building your templates.
+## Usage
+1.
+
+
+## Contribute
+1. Fork it!
+2. Create your feature branch:
+```git checkout -b <new-feature-branch-name-here>```
+3. Commit your changes:
+```git commit -m 'Add some feature'```
+4. Push to the branch:
+```git push origin <new-feature-branch-name-here-too>```
+5. Submit a pull request :D
+
+Small note: If editing the Readme, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+
+## Credits
+Project Manager:
+  - Gilberto Diaz
+
+API Build Contributors:
+  * [Miriam Rozenbaum](https://github.com/mrozenbaum)
+  * [Justin Short](https://github.com/short880)
+  * [Casey Daley](https://github.com/caseydailey)
+  * [Taylor Perkins](https://github.com/taylorperkins)
+
+## License
+[MIT © Trashy Armadillos](./LICENSE)

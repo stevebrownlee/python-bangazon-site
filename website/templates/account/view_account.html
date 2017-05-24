@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <h1>Account information view</h1>
+
+    <ol>
+    {% for product in products %}
+        <li>{{ product.title }}</li>
+    {% endfor %}
+    </ol>
+    <li><a href="{%url 'website:edit_account' %}">Edit Account</a></li>
+  </body>
+</html>

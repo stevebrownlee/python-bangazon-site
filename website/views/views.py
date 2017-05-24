@@ -93,6 +93,13 @@ def user_logout(request):
 
 
 def sell_product(request):
+
+    """
+    purpose: add a payment type to the data base
+    author: Dean Smith, Helana Nosrat
+    args: request allows Django to see user session data
+    """
+
     if request.method == 'GET':
         product_form = ProductForm()
         template_name = 'product/create.html'
@@ -120,6 +127,13 @@ def list_products(request):
     return render(request, template_name, {'products': all_products})
 
 def add_payment_type(request):
+
+     """
+    purpose: add a payment type to the data base
+    author: Dean Smith, Helana Nosrat
+    args: request allows Django to see user session data
+    """
+
     if request.method == 'GET':
         payment_type_form = PaymentTypeForm()
         template_name = 'payment.html'

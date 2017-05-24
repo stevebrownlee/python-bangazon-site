@@ -16,6 +16,18 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
+    def get_top_three_products(self):
+        """
+        purpose: creates a top 3 list of products in a product category
+        author: Bri Wyatt 
+        returns: a list of the first three products in the 
+        category. Each text item is a hyperlink 
+        that connects to that product's detail page 
+        """
+        return Product.objects.filter(category=self)[:3]
+
+
 class Product(models.Model):
     """
     purpose: creates the product table in the database
@@ -26,6 +38,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete = models.CASCADE,
+        related_name = 'product'
     )
     seller = models.ForeignKey(
         User,
@@ -64,7 +77,12 @@ class Order(models.Model):
         User,
         on_delete = models.CASCADE,
     )
-    payment_type_id = models.IntegerField()
+    payment_type = models.ForeignKey(
+        PaymentType,
+        on_delete = models.CASCADE,
+        null= True,
+        blank= True
+    )
 
 class LineItem(models.Model):
     """

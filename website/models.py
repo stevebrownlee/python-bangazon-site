@@ -58,8 +58,8 @@ class PaymentType(models.Model):
     name = models.TextField(blank=True, null=False, max_length=50) 
     account_number = models.IntegerField(range(12, 20))
 
-    def __str__(self):  # __unicode__ on Python 2
-        return self.name
+    # def __str__(self):  # __unicode__ on Python 2
+    #     return self.name
 
 
 class Order(models.Model):

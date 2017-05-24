@@ -91,7 +91,7 @@ class Product(models.Model):
     )
     quantity = models.IntegerField(null=False)
     description = models.TextField(null=False, max_length=500)
-    price = models.DecimalField(max_digits=5, decimal_places=2, null=False)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=False)
     date_created = models.DateField(auto_now=True, auto_now_add=False)  # This auto generates date on creation
     title = models.CharField(max_length=255)
 

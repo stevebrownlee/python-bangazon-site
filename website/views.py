@@ -7,7 +7,7 @@ from django.template import RequestContext
 
 
 from website.forms import UserForm, ProductForm, AddPaymentForm
-from website.models import Product, Category, PaymentType, Order
+from website.models import Product, Category, PaymentType, Order, UserOrder
 
 def index(request):
     template_name = 'index.html'
@@ -213,7 +213,10 @@ def product_details(request, product_id):
         try:
             open_order = all_orders.get(date_complete__isnull=True)
             print(open_order)
-            product.order.add(open_order)
+            user_order = UserOrder(
+                product=product,
+                order=open_order)
+            user_order.save()
 
             return HttpResponseRedirect('/view_order/{}'.format(open_order.id))
 
@@ -224,7 +227,10 @@ def product_details(request, product_id):
                 payment_type = None,
                 date_complete = None)
             open_order.save()
-            p_o = product.order.add(open_order)
+            user_order = UserOrder(
+                product=product,
+                order=open_order)
+            user_order.save()
             users_orders = Order.objects.filter(buyer=request.user)
             print(users_orders)
 
@@ -275,13 +281,14 @@ def edit_payment_type(request):
 
 @login_required
 def view_order(request, order_id):
-    user_order = Order.objects.get(pk=order_id)
+    user_orders = Order.objects.get(pk=order_id)
+
     if request.method == 'GET':
-        products = Product.objects.filter(order=order_id)
+        products = UserOrder.objects.filter(order=user_orders)
         template_name = 'orders/view_order.html'
         return render(request, template_name, {
-            "products": products
-            })
+            "products": products})
+
     elif request.method == 'POST':
         return HttpResponseRedirect('/view_checkout/{}'.format(order_id))
 

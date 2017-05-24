@@ -9,8 +9,9 @@
     <h1>Edit Selected Payment Page</h1>
 
     <ol>
-    {% for product in products %}
-        <li>{{ product.title }}</li>
+    {% for payment_type in payment_types %}
+        <li>{{ payment_type.name }}</li>
+        <li>{{ payment_type.account_number }}</li>
     {% endfor %}
     </ol>
   </body>

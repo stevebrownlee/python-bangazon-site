@@ -72,3 +72,15 @@ class ViewsTestCases(TestCase):
         self.assertContains(response, self.product.description)
         self.assertContains(response, self.product.price)
         self.assertContains(response, self.product.quantity)
+
+    def test_category_view_returns_correct_products(self):
+        """
+        purpose: test that when the category view is requested, that there are products in the response.
+        in response
+        author: James Tonkin
+        args: (integer) product_id
+        returns: pass/fail based upon successful/unsuccessful assertion
+        """
+
+        response = self.client.get(reverse('website:single_category', args={self.product.pk}))
+        self.assertContains(response, self.product.pk)

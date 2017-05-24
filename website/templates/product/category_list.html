@@ -3,7 +3,7 @@
     <h1>Product Categories</h1>
 
     {% for category in categories %}
-        <p>{{ category.name }} ({{ category.product.count }})</p>
+        <p><a href="{% url 'website:single_category' category.id %}">{{ category.name }} ({{ category.product.count }})</a></p>
         <ol>
         {% for product in category.get_top_three_products %}
         <li id="{{product.id}}"><a href="{% url 'website:product_detail' product.id %}">{{ product.title }}</a></li>

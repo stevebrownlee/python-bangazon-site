@@ -88,7 +88,12 @@ class Order(models.Model):
         User,
         on_delete = models.CASCADE,
     )
-    payment_type_id = models.IntegerField()
+    payment_type = models.ForeignKey(
+        PaymentType,
+        on_delete = models.CASCADE,
+        null= True,
+        blank= True
+    )
 
 class LineItem(models.Model):
     """

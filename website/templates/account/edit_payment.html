@@ -7,12 +7,15 @@
   </head>
   <body>
     <h1>Edit Selected Payment Page</h1>
-
-    <ol>
-    {% for payment_type in payment_types %}
-        <li>{{ payment_type.name }}</li>
-        <li>{{ payment_type.account_number }}</li>
-    {% endfor %}
-    </ol>
+        <ol> {% for payment_type in payment_types %}
+          <form id="edit_payment_type" method="post" action="{% url 'website:edit_payment_type' %}">
+            {% csrf_token %}
+            <input type="hidden" value="{{payment_type.id}}" name="payment_type" />
+            <li>{{ payment_type.name }} {{ payment_type.account_number }}<input type="submit" value="delete" />
+            </li>
+          </form>
+          {% endfor %}
+      </ol>
   </body>
 </html>
+    

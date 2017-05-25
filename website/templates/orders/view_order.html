@@ -19,13 +19,19 @@
           <input type="submit" name="delete" value="delete">
 
         </form>
-        {% endfor %}
-
-
+      {% endfor %}
     </ol>
+
     <form method="post">
-    {% csrf_token %}
-    <input type="submit" name="checkout" value="checkout">
+      {% csrf_token %}
+      <input type="submit" name="checkout" value="checkout">
     </form>
+
+    <form method="post">
+      {% csrf_token %}
+      <input type="submit" name="cancel_order" value="Cancel Order">
+    </form>
+
+
   </body>
 </html>

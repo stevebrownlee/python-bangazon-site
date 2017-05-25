@@ -11,7 +11,7 @@ class Category(models.Model):
     args: models.Model
     returns: N/A
     """
-    name = models.CharField(max_length = 255)
+    name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
@@ -80,8 +80,8 @@ class Order(models.Model):
     payment_type = models.ForeignKey(
         PaymentType,
         on_delete = models.CASCADE,
-        null= True,
-        blank= True
+        null = True,
+        blank = True
     )
 
 class LineItem(models.Model):

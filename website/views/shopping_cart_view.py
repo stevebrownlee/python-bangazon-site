@@ -14,9 +14,8 @@ def shopping_cart(request):
     user_order = Order.objects.filter(user_id = user.id
         ).filter(payment_type_id = None)
     template_name = 'shopping_cart.html'
-
     if user_order:
-        return render(request, template_name, {'open_order': user_order.id})
+        return render(request, template_name, {'open_order': user_order})
     else:
         request.POST
         user_order = Order(

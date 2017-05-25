@@ -79,6 +79,7 @@ class ViewsTestCases(TestCase):
         self.assertContains(response, self.product.price)
         self.assertContains(response, self.product.quantity)
 
+
     # Verify that the Payment Types view for a customer has all of the payment types in the request context
     def test_payment_type_detail_view_has_all_information(self):
         """
@@ -91,3 +92,16 @@ class ViewsTestCases(TestCase):
         response = self.client.get(reverse('website:paymentlist', args={self.user.pk}))
         self.assertContains(response, self.payment_type.name)
         self.assertContains(response, self.payment_type.account_number)
+
+    def test_category_view_returns_correct_products(self):
+        """
+        purpose: test that when the category view is requested, that there are products in the response.
+        in response
+        author: James Tonkin
+        args: (integer) product_id
+        returns: pass/fail based upon successful/unsuccessful assertion
+        """
+
+        response = self.client.get(reverse('website:single_category', args={self.product.pk}))
+        self.assertContains(response, self.product.pk)
+

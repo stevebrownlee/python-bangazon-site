@@ -276,8 +276,8 @@ def edit_payment_type(request):
     payment_types = PaymentType.objects.filter(user=request.user)
     template_name = 'account/edit_payment.html'
     if request.method == "POST":
-       payment_type = PaymentType.objects.get(pk=request.POST.get('payment_type'))
-       payment_type.delete()
+        payment_type = PaymentType.objects.get(pk=request.POST.get('payment_type'))
+        payment_type.delete()
     return render(request, template_name, {
         "payment_types": payment_types
         })
@@ -292,13 +292,10 @@ def view_order(request, order_id):
     """
     user_order = UserOrder.objects.filter(order=Order.objects.get(pk=order_id))
     print(user_order)
+    template_name = 'orders/view_order.html'        
 
     if request.method == 'GET':
-        products = Product.objects.filter(order=order_id)
-        template_name = 'orders/view_order.html'
-        return render(request, template_name, {
-            "products": user_order
-            })
+        pass        
 
     elif 'delete' in request.POST:
         print(request.POST.get("product"))
@@ -309,6 +306,14 @@ def view_order(request, order_id):
 
     elif 'checkout' in request.POST:
         return HttpResponseRedirect('/view_checkout/{}'.format(order_id))
+
+    elif 'cancel_order' in request.POST:        
+        order = Order.objects.get(pk=order_id)
+        order.delete()    
+        return HttpResponseRedirect('/')    
+
+    return render(request, template_name, {
+            "products": user_order})
 
 @login_required
 def view_checkout(request, order_id):

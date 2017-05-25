@@ -10,19 +10,10 @@ from website.models import Product, Order, LineItem
 
 
 def shopping_cart(request): 
-    user = request.user
-    user_order = Order.objects.filter(user_id = user.id
-        ).filter(payment_type_id = None)
-    template_name = 'shopping_cart.html'
-    if user_order:
-        return render(request, template_name, {'open_order': user_order})
-    else:
-        request.POST
-        user_order = Order(
-            user = request.user,
-        )
-        user_order.save()
-        return render(request, template_name, {'open_order': user_order.id})
-
-    products_on_order = LineItem.objects.filter(order_id = user_order.id)
-    return render(request, template_name, {'products_on_order': products_on_order})
+        user = request.user
+        user_order = Order.objects.get_or_create(payment_type_id = None, user_id = user.id)
+        template_name = 'shopping_cart.html'
+        return render(request, template_name, {'open_order': user_order[0].id})
+       
+        products_on_order = LineItem.objects.filter(order_id = user_order[0].id)
+        return render(request, template_name, {'products_on_order': products_on_order})

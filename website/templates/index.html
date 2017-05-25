@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,9 @@
   <li role="presentation"><a href="{% url 'website:index' %}">Home</a></li>
   <li role="presentation"><a href="{% url 'website:categories' %}">Product Categories</a></li>
   <li role="presentation"><a href="{% url 'website:sell' %}">Sell a Product</a></li>
-  <li role="presentation"><a href="#"></a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="{% url 'website:payment_type' %}">Add A Payment Type</a></li>
+  <li role="presentation"><a href="{% url 'website:paymentlist' %}">Payment List</a></li>
   <li role="presentation"><a href="{% url 'website:logout' %}">Logout</a></li>
 </ul>
 {% else %}

@@ -1,3 +1,4 @@
+
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
@@ -157,16 +158,4 @@ def all_payment_types(request):
         payment_type_dict = {'all_payment_types': all_payment_types}
         return render(request, template_name, payment_type_dict)
 
-    # elif request.method == 'POST':
-    #     form_data = request.POST
-    #     p = PaymentType(
-    #         user=request.user,
-    #         name=form_data['name'],
-    #         account_number=form_data['account_number'],
-    #     )
-    #     p.save()
-    #     template_name = 'payment.html'
-    #     return render(request, template_name, {'paymenttype': form_data})
-    
-
-   
+ 

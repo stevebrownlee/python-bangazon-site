@@ -1,5 +1,13 @@
 {% extends "index.html" %}
 {% block content %}
     <h1>My Cart</h1>
-    
+    {% for product in products_on_order %}
+    <div>
+    <ul>
+        <li id="{{product.id}}">{{product.title}} - ${{product.price}}</li>
+    </ul>
+    </div>
+    {% endfor %}
 {% endblock %}
+
+

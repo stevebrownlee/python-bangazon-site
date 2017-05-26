@@ -103,7 +103,7 @@ class LineItem(models.Model):
     returns: N/A
     """
     order = models.ForeignKey(
-        User,
+        Order,
         on_delete = models.CASCADE,
     )
     product = models.ForeignKey(Product)

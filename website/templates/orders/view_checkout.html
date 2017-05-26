@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <h1>Checkout Page!</h1>
+
+    <ol>
+    {% for product in products %}
+        <li>{{ product }}</li>
+    {% endfor %}
+    </ol>
+
+    <h2>Please Select a Payment Type:</h2>
+
+    <form method="post">
+    {% csrf_token %} 
+        <select name="select">
+          {% for payment_type in payment_types %}
+          {{ complete_order_form.as_p }}
+          <option value="{{payment_type.id}}">{{payment_type.name}}</option>
+          {% endfor %}
+        </select>
+   
+    <input type="submit" value="done">
+    </form>
+  </body>
+</html>

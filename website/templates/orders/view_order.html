@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <h1>View Order (NOT CHECKOUT PAGE: where you can remove and clicked checkout button)</h1>
+
+    <ol>
+    {% for product in products %}
+
+        <li>{{ product}}</li>
+        <form method="post">
+          {% csrf_token %}
+          <h1> {{product.id}} </h1>
+          <input type="hidden" name="product" value="{{product.id}}">
+          <input type="submit" name="delete" value="delete">
+
+        </form>
+      {% endfor %}
+    </ol>
+
+    <form method="post">
+      {% csrf_token %}
+      <input type="submit" name="checkout" value="checkout">
+    </form>
+
+    <form method="post">
+      {% csrf_token %}
+      <input type="submit" name="cancel_order" value="Cancel Order">
+    </form>
+
+
+  </body>
+</html>

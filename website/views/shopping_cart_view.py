@@ -20,6 +20,8 @@ def shopping_cart(request):
     user = request.user
     user_order = Order.objects.get_or_create(payment_type_id = None, user_id = user.id)
     template_name = 'shopping_cart.html'
-    return render(request, template_name, {'open_order': user_order[0].id})
-    products_on_order = LineItem.objects.filter(order_id = user_order[0].id)
+    # return render(request, template_name, {'open_order': user_order[0].id})
+
+    products_on_order = LineItem.objects.all().filter(order_id = user_order[0].id)
+    print("products on order", products_on_order)
     return render(request, template_name, {'products_on_order': products_on_order})

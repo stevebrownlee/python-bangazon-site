@@ -27,6 +27,7 @@ def get_order(request):
         user = request.user
         user_order = Order.objects.get_or_create(payment_type_id = None, user_id = user.id)
         return user_order
+        print("order", user_order)
 
 def add_to_cart(request):
     """
@@ -36,7 +37,6 @@ def add_to_cart(request):
     returns:
     """
     if request.method == 'GET':
-        print("print request context", request.GET)
         add_to_cart_form = AddToCartForm()
         template_name = 'product_detail.html'
         return render(request, template_name, {'add_to_cart_form': add_to_cart_form})
@@ -47,8 +47,8 @@ def add_to_cart(request):
         p = Product.objects.get(pk=form_data['product_id'])
         li = LineItem(
             product=p,
-            order=order,
+            order=order[0],
         )
         li.save()
-        template_name = 'product_detail.html'
+        template_name = 'shopping_cart.html'
         return render(request, template_name, {'lineitem': form_data})

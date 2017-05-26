@@ -135,7 +135,7 @@ def add_payment_type(request):
     args: name: (string), acount number of credit card
 
     returns: (render): a view of of the request, template to use, and product obj
-    ''' 
+    '''
     if request.method == 'GET':
         add_payment_form = AddPaymentForm()
         template_name = 'account/add_payment.html'
@@ -288,14 +288,16 @@ def view_order(request, order_id):
     purpose: present user order and handle interaction with cart
     author: casey dailey
     args: request, order_id
-    returns: 
+    returns:
     """
     user_order = UserOrder.objects.filter(order=Order.objects.get(pk=order_id))
     print(user_order)
-    template_name = 'orders/view_order.html'        
+    template_name = 'orders/view_order.html'
 
     if request.method == 'GET':
-        pass        
+        print('fullstack')
+        return render(request, template_name, {
+            "products": user_order})
 
     elif 'delete' in request.POST:
         print(request.POST.get("product"))
@@ -307,13 +309,13 @@ def view_order(request, order_id):
     elif 'checkout' in request.POST:
         return HttpResponseRedirect('/view_checkout/{}'.format(order_id))
 
-    elif 'cancel_order' in request.POST:        
+    elif 'cancel_order' in request.POST:
         order = Order.objects.get(pk=order_id)
-        order.delete()    
-        return HttpResponseRedirect('/')    
+        order.delete()
+        return HttpResponseRedirect('/')
 
-    return render(request, template_name, {
-            "products": user_order})
+    # return render(request, template_name, {
+    #         "products": user_order})
 
 @login_required
 def view_checkout(request, order_id):

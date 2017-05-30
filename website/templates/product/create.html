@@ -1,11 +1,5 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Bangazon</title>
-  </head>
-  <body>
+{% extends "index.html" %}
+{% block content %}
     <h1>Sell Product</h1>
 
 
@@ -14,6 +8,4 @@
       {{ product_form.as_p }}
       <input type="submit" value="Sell It" />
     </form>
-  </body>
-</html>
-
+{% endblock %}

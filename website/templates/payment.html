@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% block content %}
+        {% if user.is_authenticated %}
+        <h1>Add A Payment Type</h1>
+        <h4>Payment Name: {{paymenttype.name}}</h4>
+        <h4>Account Number: {{paymenttype.account_number}}</h4>
+		<form action="{% url 'website:payment_type' %}" method="post">
+	      {% csrf_token %}
+	      {{ payment_type_form.as_p }}
+	      <input type="submit" value="Submit" />
+	    </form>
+        {% endif %}
+{% endblock %}

@@ -1,19 +1,42 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Bangazon</title>
-  </head>
-  <body>
-    <h1>Welcome to Bangazon!</h1>
-    {% if user.is_authenticated %}
-    <h1>Bangazon says... hello {{ user.username }}!</h1>
-    <a href="{% url 'website:logout' %}">Logout</a>
-    {% else %}
-    <h1>Bangazon says...</h1>
-    <div><a href="{% url 'website:register' %}">Register</a></div>
-    <div><a href="{% url 'website:login' %}">Login</a></div>
-    {% endif %}
-  </body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<!--   <li role="presentation"><a href="#">Messages</a></li>
+ -->{% if user.is_authenticated %}
+<ul class="nav nav-pills nav-justified">
+
+
+  <li role="presentation"><a href="{% url 'website:index' %}">Home</a></li>
+  <li role="presentation"><a href="{% url 'website:categories' %}">Product Categories</a></li>
+  <li role="presentation"><a href="{% url 'website:sell' %}">Sell a Product</a></li>
+  <li role="presentation"><a href="{% url 'website:shopping_cart' %}">Shopping Cart</a></li>
+  <li role="presentation"><a href="{% url 'website:payment_type' %}">Add A Payment Type</a></li>
+  <li role="presentation"><a href="{% url 'website:paymentlist' %}">Payment List</a></li>
+  <li role="presentation"><a href="{% url 'website:logout' %}">Logout</a></li>
+</ul>
+{% else %}
+<ul class="nav nav-pills nav-justified">
+  <li role="presentation"><a href="{% url 'website:index' %}">Home</a></li>
+  <li role="presentation"><a href="{% url 'website:list_products' %}">Product Categories</a></li>
+  <li role="presentation"><div><a href="{% url 'website:login' %}">Login</a></div></li>
+  <li role="presentation"><div><a href="{% url 'website:register' %}">Register</a></div></li>
+</ul>
+    <h3>Bangazon says...you gotta log in pal</h3>
+{% endif %}
+<ol>
+Welcome to Bangazon {{ user.first_name }}.
+
+    {% for product in products %}
+        <li id="{{product.id}}"><a href="{% url 'website:product_detail' product.id %}">{{ product.title }}</a></li>
+    {% endfor %}
+</ol>
+{% block content %}{% endblock %}
+</body>
 </html>

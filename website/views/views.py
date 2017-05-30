@@ -1,15 +1,17 @@
+
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.template import RequestContext
 
-from website.forms import UserForm, ProductForm
-from website.models import Product
+from website.forms import UserForm, ProductForm, PaymentTypeForm
+from website.models import Product, Category, PaymentType
 
 def index(request):
     template_name = 'index.html'
-    return render(request, template_name, {})
+    all_products = Product.objects.all().order_by('-id')[:20]
+    return render(request, template_name, {'products': all_products})
 
 
 # Create your views here.
@@ -92,6 +94,13 @@ def user_logout(request):
 
 
 def sell_product(request):
+
+    """
+    purpose: add a payment type to the data base
+    author: Dean Smith, Helana Nosrat
+    args: request allows Django to see user session data
+    """
+
     if request.method == 'GET':
         product_form = ProductForm()
         template_name = 'product/create.html'
@@ -99,25 +108,54 @@ def sell_product(request):
 
     elif request.method == 'POST':
         form_data = request.POST
-
+        c = Category.objects.get(pk=form_data['category'])
         p = Product(
             seller = request.user,
             title = form_data['title'],
             description = form_data['description'],
             price = form_data['price'],
             quantity = form_data['quantity'],
+            date = 'date',
+            category = c,
         )
         p.save()
-        template_name = 'product/success.html'
-        return render(request, template_name, {})
+        template_name = 'product/product_detail.html'
+        return render(request, template_name, {'product': form_data})
 
 def list_products(request):
     all_products = Product.objects.all()
     template_name = 'product/list.html'
     return render(request, template_name, {'products': all_products})
 
+def add_payment_type(request):
 
+    """
+    purpose: add a payment type to the data base
+    author: Dean Smith, Helana Nosrat
+    args: request allows Django to see user session data
+    """
 
+    if request.method == 'GET':
+        payment_type_form = PaymentTypeForm()
+        template_name = 'payment.html'
+        return render(request, template_name, {'payment_type_form': payment_type_form})
 
+    elif request.method == 'POST':
+        form_data = request.POST
+        p = PaymentType(
+            user=request.user,
+            name=form_data['name'],
+            account_number=form_data['account_number'],
+        )
+        p.save()
+        template_name = 'payment.html'
+        return render(request, template_name, {'paymenttype': form_data})
 
+def all_payment_types(request):
+        user = request.user
+        all_payment_types = PaymentType.objects.filter(user_id=user.id)
+        template_name = 'list_payment.html'
+        payment_type_dict = {'all_payment_types': all_payment_types}
+        return render(request, template_name, payment_type_dict)
 
+ 

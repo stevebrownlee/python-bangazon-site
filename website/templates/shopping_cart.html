@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+{% block content %}
+    <h1>My Cart</h1>
+    {% for product in products_on_order %}
+    <ul>
+    <li id="{{product.id}}">{{product.product.title}} - ${{product.product.price}}</li>
+    </ul>
+    {% endfor %}
+{% endblock %}

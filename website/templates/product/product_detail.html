@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block content %}
+	<h1>Product title: {{product.title}}</h1>
+	<h4>Product Description: {{product.description}}</h4>
+	<h4>Product Quantity: {{product.quantity}}</h4>
+	<h4>Product Price: {{product.price}}</h4>
+	{% if user.is_authenticated %}
+
+	<form action="{% url 'website:add_to_cart' %}" method="POST">
+		{% csrf_token %}
+		{{add_to_cart_form.as_p}}
+		<input type="hidden" value="{{product.id}}" name="product_id" />
+		<input type="submit" value="Add to Order" />
+	</form>
+	{% endif %}
+{% endblock %}

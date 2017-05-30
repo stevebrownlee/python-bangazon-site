@@ -24,17 +24,22 @@ def product_detail(request, product_id):
     return render(request, template_name, {'product': product})
 
 def get_order(request):
-        user = request.user
-        user_order = Order.objects.get_or_create(payment_type_id = None, user_id = user.id)
-        return user_order
-        print("order", user_order)
+    """
+    purpose: Gets user open order or creates a new order.
+    author: Helana Nosrat
+    args: request allows Django to see user session data
+    """
+    user = request.user
+    user_order = Order.objects.get_or_create(payment_type_id = None, user_id = user.id)
+    return user_order
+    print("order", user_order)
 
 def add_to_cart(request):
     """
-    purpose:
-    author:
-    args:
-    returns:
+    purpose: Adds products to the order.
+    author: Helana Nosrat
+    args: request allows Django to see user session data
+    returns: returns and renders shopping cart view with products in order.
     """
     if request.method == 'GET':
         add_to_cart_form = AddToCartForm()
@@ -50,5 +55,4 @@ def add_to_cart(request):
             order=order[0],
         )
         li.save()
-        template_name = 'shopping_cart.html'
-        return render(request, template_name, {'lineitem': form_data})
+        return HttpResponseRedirect('/shopping_cart')

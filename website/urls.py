@@ -12,5 +12,3 @@ urlpatterns = [
     url(r'^products/$', views.list_products),
     url(r'^product/(?P<id>\d+)/$', views.detail_product, name='detail')
 ]
-
-# name='list_products'

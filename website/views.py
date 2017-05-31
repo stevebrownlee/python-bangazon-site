@@ -93,39 +93,18 @@ def user_logout(request):
 
 def sell_product(request):
     """pass"""
-    form = ProductForm(request.POST or None)
-    # print(current_user.id, form['title'], form['description'], form['price'], form['quantity'])
+    form = ProductForm(request.POST)
+
     if form.is_valid():
-        data = Product(
-            seller=request.user,
-            title=form['title'],
-            description=form['description'],
-            price=form['price'],
-            quantity=form['quantity'],
-        )
-        data.save()
+        new_product = form.save(commit=False)
+        new_product.seller = request.user
+        new_product.save()
+    # TODO: redirect to product detail
     context = {
         "product_form": form
     }
     return render(request, 'product/create.html', context)
-    # if request.method == 'GET':
-    #     product_form = ProductForm()
-    #     template_name = 'product/create.html'
-    #     return render(request, template_name, {'product_form': product_form})
 
-    # elif request.method == 'POST':
-    #     form_data = request.POST
-
-    #     p = Product(
-    #         seller = request.user,
-    #         title = form_data['title'],
-    #         description = form_data['description'],
-    #         price = form_data['price'],
-    #         quantity = form_data['quantity'],
-    #     )
-    #     p.save()
-    #     template_name = 'product/success.html'
-    #     return render(request, template_name, {})
 
 def list_products(request):
     all_products = Product.objects.all()

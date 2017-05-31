@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Product(models.Model):
@@ -11,3 +12,12 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     price = models.IntegerField()
     quantity = models.IntegerField()
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        context = {
+            "id": self.id
+        }
+        return reverse("website:detail", kwargs=context)

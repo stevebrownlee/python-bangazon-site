@@ -1,7 +1,7 @@
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 
 from website.forms import UserForm, ProductForm
@@ -92,32 +92,35 @@ def user_logout(request):
 
 
 def sell_product(request):
-    if request.method == 'GET':
-        product_form = ProductForm()
-        template_name = 'product/create.html'
-        return render(request, template_name, {'product_form': product_form})
+    """pass"""
+    form = ProductForm(request.POST or None)
 
-    elif request.method == 'POST':
-        form_data = request.POST
+    if form.is_valid():
+        new_product = form.save(commit=False)
+        new_product.seller = request.user
+        new_product.save()
+        return HttpResponseRedirect(new_product.get_absolute_url())
+    context = {
+        "product_form": form
+    }
+    return render(request, 'product/create.html', context)
 
-        p = Product(
-            seller = request.user,
-            title = form_data['title'],
-            description = form_data['description'],
-            price = form_data['price'],
-            quantity = form_data['quantity'],
-        )
-        p.save()
-        template_name = 'product/success.html'
-        return render(request, template_name, {})
 
 def list_products(request):
     all_products = Product.objects.all()
-    template_name = 'product/list.html'
-    return render(request, template_name, {'products': all_products})
+    context = {
+        "title": "Products List",
+        "products": all_products
+    }
+
+    return render(request, 'product/list.html', context)
 
 
+def detail_product(request, id):
+    """pass"""
+    product_instance = get_object_or_404(Product, id=id)
 
-
-
-
+    context = {
+        "product": product_instance
+    }
+    return render(request, 'product/detail.html', context)

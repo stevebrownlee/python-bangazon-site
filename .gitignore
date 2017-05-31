@@ -6,3 +6,6 @@ bin
 obj
 *.db
 *.sqlite3
+include/*
+lib/*
+*.json

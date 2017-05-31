@@ -99,7 +99,7 @@ def sell_product(request):
         new_product = form.save(commit=False)
         new_product.seller = request.user
         new_product.save()
-
+    # TODO: redirect to product detail
     context = {
         "product_form": form
     }

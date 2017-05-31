@@ -1,7 +1,7 @@
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 
 from website.forms import UserForm, ProductForm
@@ -113,11 +113,19 @@ def sell_product(request):
 
 def list_products(request):
     all_products = Product.objects.all()
-    template_name = 'product/list.html'
-    return render(request, template_name, {'products': all_products})
+    context = {
+        "title": "Products List",
+        "products": all_products
+    }
+
+    return render(request, 'product/list.html', context)
 
 
+def detail_product(request, id):
+    """pass"""
+    product_instance = get_object_or_404(Product, id=id)
 
-
-
-
+    context = {
+        "product": product_instance
+    }
+    return render(request, 'product/detail.html', context)

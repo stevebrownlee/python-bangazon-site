@@ -93,13 +93,13 @@ def user_logout(request):
 
 def sell_product(request):
     """pass"""
-    form = ProductForm(request.POST)
+    form = ProductForm(request.POST or None)
 
     if form.is_valid():
         new_product = form.save(commit=False)
         new_product.seller = request.user
         new_product.save()
-    # TODO: redirect to product detail
+        return HttpResponseRedirect(new_product.get_absolute_url())
     context = {
         "product_form": form
     }

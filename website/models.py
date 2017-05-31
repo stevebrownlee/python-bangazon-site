@@ -21,4 +21,3 @@ class Product(models.Model):
             "id": self.id
         }
         return reverse("website:detail", kwargs=context)
-        # return f'/product/{self.id}'

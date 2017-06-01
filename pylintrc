@@ -1,1 +1,2 @@
 good-names=id
+pylint: disable-msg=C0103

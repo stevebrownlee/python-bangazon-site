@@ -6,6 +6,7 @@
     <title>Bangazon</title>
   </head>
   <body>
+    <a href="{% url 'website:products' %}">All Products</a> | <a href="{% url 'website:edit' id=product.id %}">Edit Product</a>
     <h1>{{title}}</h1>
         <h2>{{product.title}}</h2>
         Id: {{product.id}} <br>

@@ -91,22 +91,8 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 
-def sell_product(request):
-    """pass"""
-    form = ProductForm(request.POST)
-
-    if form.is_valid():
-        new_product = form.save(commit=False)
-        new_product.seller = request.user
-        new_product.save()
-    # TODO: redirect to product detail
-    context = {
-        "product_form": form
-    }
-    return render(request, 'product/create.html', context)
-
-
 def list_products(request):
+    """pass"""
     all_products = Product.objects.all()
     context = {
         "title": "Products List",
@@ -116,11 +102,44 @@ def list_products(request):
     return render(request, 'product/list.html', context)
 
 
-def detail_product(request, id):
+def sell_product(request):
     """pass"""
-    product_instance = get_object_or_404(Product, id=id)
+    form = ProductForm(request.POST or None)
+
+    if form.is_valid():
+        new_product = form.save(commit=False)
+        new_product.seller = request.user
+        new_product.save()
+        return HttpResponseRedirect(new_product.get_absolute_url())
 
     context = {
-        "product": product_instance
+        "product_form": form
+    }
+    return render(request, 'product/create.html', context)
+
+
+def edit_product(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Product, id=id)
+    form = ProductForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return HttpResponseRedirect(instance.get_absolute_url())
+    context = {
+        "tile": instance.title,
+        "instance": instance,
+        "product_form": form
+    }
+    return render(request, 'product/create.html', context)
+
+
+def detail_product(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Product, id=id)
+
+    context = {
+        "title": "Product Detail",
+        "product": instance
     }
     return render(request, 'product/detail.html', context)

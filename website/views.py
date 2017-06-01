@@ -1,11 +1,12 @@
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
 
 from website.forms import UserForm, ProductForm
 from website.models import Product
+
 
 def index(request):
     template_name = 'index.html'
@@ -63,8 +64,8 @@ def login_user(request):
     if request.method == 'POST':
 
         # Use the built-in authenticate method to verify
-        username=request.POST['username']
-        password=request.POST['password']
+        username = request.POST['username']
+        password = request.POST['password']
         authenticated_user = authenticate(username=username, password=password)
 
         # If authentication was successful, log the user in
@@ -77,8 +78,8 @@ def login_user(request):
             print("Invalid login details: {}, {}".format(username, password))
             return HttpResponse("Invalid login details supplied.")
 
-
     return render(request, 'login.html', {}, context)
+
 
 # Use the login_required() decorator to ensure only those logged in can access the view.
 @login_required
@@ -143,3 +144,10 @@ def detail_product(request, id=None):
         "product": instance
     }
     return render(request, 'product/detail.html', context)
+
+
+def delete_product(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Product, id=id)
+    instance.delete()
+    return redirect('website:products')

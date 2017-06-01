@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.core.urlresolvers import reverse
 
+
 # Create your models here.
 class Product(models.Model):
     seller = models.ForeignKey(

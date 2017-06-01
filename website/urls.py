@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^sell$', views.sell_product, name='sell'),
     url(r'^product/(?P<id>\d+)/$', views.detail_product, name='detail'),
     url(r'^(?P<id>\d+)/edit', views.edit_product, name='edit'),
+    url(r'^(?P<id>\d+)/delete', views.delete_product, name='delete'),
 ]

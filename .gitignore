@@ -9,3 +9,5 @@ obj
 include/*
 lib/*
 *.json
+website/migrations/*
+.vscode/*

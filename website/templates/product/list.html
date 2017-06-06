@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
-    <a href="/sell">Sell a Product</a>
+    <a href="/sell">Sell a Product</a> | <a href="{% url 'website:categories' %}">Categories</a>
 
     <ol>
     {% for product in products %}

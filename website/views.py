@@ -4,8 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
 
-from website.forms import UserForm, ProductForm
-from website.models import Product
+from website.forms import UserForm, ProductForm, CategoryForm
+from website.models import Product, Category
 
 
 def index(request):
@@ -111,7 +111,7 @@ def sell_product(request):
         new_product = form.save(commit=False)
         new_product.seller = request.user
         new_product.save()
-        return HttpResponseRedirect(new_product.get_absolute_url())
+        return redirect(new_product.get_absolute_url())
 
     context = {
         "product_form": form
@@ -126,7 +126,7 @@ def edit_product(request, id=None):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-        return HttpResponseRedirect(instance.get_absolute_url())
+        return redirect(instance.get_absolute_url())
     context = {
         "tile": instance.title,
         "instance": instance,
@@ -151,3 +151,60 @@ def delete_product(request, id=None):
     instance = get_object_or_404(Product, id=id)
     instance.delete()
     return redirect('website:products')
+
+
+def add_category(request):
+    """pass"""
+    form = CategoryForm(request.POST or None)
+
+    if form.is_valid():
+        form.save(commit=False)
+        form.save()
+        return redirect('website:categories')
+
+    context = {
+        "category_form": form
+    }
+    return render(request, 'product/category.html', context)
+
+
+def list_categories(request):
+    """pass"""
+    categories = Category.objects.all()
+    context = {
+        "categories": categories
+    }
+    return render(request, 'product/category-list.html', context)
+
+
+def detail_category(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Category, id=id)
+
+    context = {
+        "title": "Category Detail",
+        "category": instance
+    }
+    return render(request, 'product/category-detail.html', context)
+
+
+def delete_category(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Category, id=id)
+    instance.delete()
+    return redirect('website:categories')
+
+
+def edit_category(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Category, id=id)
+    form = CategoryForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect(instance.get_absolute_url())
+    context = {
+        "instance": instance,
+        "category_form": form
+    }
+    return render(request, 'product/category.html', context)

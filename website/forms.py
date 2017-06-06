@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from website.models import Product
+from website.models import Product, Category
 
 
 class UserForm(forms.ModelForm):
@@ -15,6 +15,11 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = [
-           'title', 'description', 'price', 'quantity',
-        ]
+        fields = ('title', 'description', 'price', 'quantity', 'category')
+
+
+class CategoryForm(forms.ModelForm):
+
+    class Meta:
+        model = Category
+        fields = ('name',)

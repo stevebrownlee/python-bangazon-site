@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Category Detail | Bangazon</title>
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+    <a href="{% url 'website:products' %}">All Products</a> | <a href="{% url 'website:categories' %}">Categories</a> | <a href="{% url 'website:edit-category' id=category.id %}">Edit Category</a> | <a href="{% url 'website:delete-category' id=category.id %}">Delete Category</a>
+    <hr>
+    <h2>{{category.title}}</h2>
+        Id: {{category.id}} <br>
+        Name: {{category.name}} <br>
+  </body>
+</html>

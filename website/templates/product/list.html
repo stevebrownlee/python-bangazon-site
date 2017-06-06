@@ -6,13 +6,15 @@
     <title>Bangazon</title>
   </head>
   <body>
-    <h1>Products</h1>
+    <h1>{{ title }}</h1>
+    <a href="/sell">Sell a Product</a> | <a href="{% url 'website:categories' %}">Categories</a>
 
     <ol>
     {% for product in products %}
-        <li>{{ product.title }}</li>
+        <li><a href='{{ product.get_absolute_url }}'>{{ product.title }}</a> - {{ product.quantity }}</li>
     {% endfor %}
     </ol>
   </body>
 </html>
 
+{% comment %}{% url "website:detail" id=product.id %}{% endcomment %}

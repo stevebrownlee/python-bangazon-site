@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <a href="{% url 'website:products' %}">All Products</a> | <a href="{% url 'website:edit' id=product.id %}">Edit Product</a> | <a href="{% url 'website:delete' id=product.id %}">Delete Product</a>
+    <h1>{{title}}</h1>
+        <h2>{{product.title}}</h2>
+        Id: {{product.id}} <br>
+        Category: {{product.category}} <br>
+        Description: {{product.description}} <br>
+        Price: ${{product.price}} <br>
+        Qty: {{product.quantity}}
+  </body>
+</html>

@@ -1,11 +1,12 @@
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
 
-from website.forms import UserForm, ProductForm
-from website.models import Product
+from website.forms import UserForm, ProductForm, CategoryForm
+from website.models import Product, Category
+
 
 def index(request):
     template_name = 'index.html'
@@ -63,8 +64,8 @@ def login_user(request):
     if request.method == 'POST':
 
         # Use the built-in authenticate method to verify
-        username=request.POST['username']
-        password=request.POST['password']
+        username = request.POST['username']
+        password = request.POST['password']
         authenticated_user = authenticate(username=username, password=password)
 
         # If authentication was successful, log the user in
@@ -77,8 +78,8 @@ def login_user(request):
             print("Invalid login details: {}, {}".format(username, password))
             return HttpResponse("Invalid login details supplied.")
 
-
     return render(request, 'login.html', {}, context)
+
 
 # Use the login_required() decorator to ensure only those logged in can access the view.
 @login_required
@@ -91,33 +92,119 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 
-def sell_product(request):
-    if request.method == 'GET':
-        product_form = ProductForm()
-        template_name = 'product/create.html'
-        return render(request, template_name, {'product_form': product_form})
-
-    elif request.method == 'POST':
-        form_data = request.POST
-
-        p = Product(
-            seller = request.user,
-            title = form_data['title'],
-            description = form_data['description'],
-            price = form_data['price'],
-            quantity = form_data['quantity'],
-        )
-        p.save()
-        template_name = 'product/success.html'
-        return render(request, template_name, {})
-
 def list_products(request):
+    """pass"""
     all_products = Product.objects.all()
-    template_name = 'product/list.html'
-    return render(request, template_name, {'products': all_products})
+    context = {
+        "title": "Products List",
+        "products": all_products
+    }
+
+    return render(request, 'product/list.html', context)
 
 
+def sell_product(request):
+    """pass"""
+    form = ProductForm(request.POST or None)
+
+    if form.is_valid():
+        new_product = form.save(commit=False)
+        new_product.seller = request.user
+        new_product.save()
+        return redirect(new_product.get_absolute_url())
+
+    context = {
+        "product_form": form
+    }
+    return render(request, 'product/create.html', context)
 
 
+def edit_product(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Product, id=id)
+    form = ProductForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect(instance.get_absolute_url())
+    context = {
+        "tile": instance.title,
+        "instance": instance,
+        "product_form": form
+    }
+    return render(request, 'product/create.html', context)
 
 
+def detail_product(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Product, id=id)
+
+    context = {
+        "title": "Product Detail",
+        "product": instance
+    }
+    return render(request, 'product/detail.html', context)
+
+
+def delete_product(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Product, id=id)
+    instance.delete()
+    return redirect('website:products')
+
+
+def add_category(request):
+    """pass"""
+    form = CategoryForm(request.POST or None)
+
+    if form.is_valid():
+        form.save(commit=False)
+        form.save()
+        return redirect('website:categories')
+
+    context = {
+        "category_form": form
+    }
+    return render(request, 'product/category.html', context)
+
+
+def list_categories(request):
+    """pass"""
+    categories = Category.objects.all()
+    context = {
+        "categories": categories
+    }
+    return render(request, 'product/category-list.html', context)
+
+
+def detail_category(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Category, id=id)
+
+    context = {
+        "title": "Category Detail",
+        "category": instance
+    }
+    return render(request, 'product/category-detail.html', context)
+
+
+def delete_category(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Category, id=id)
+    instance.delete()
+    return redirect('website:categories')
+
+
+def edit_category(request, id=None):
+    """pass"""
+    instance = get_object_or_404(Category, id=id)
+    form = CategoryForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect(instance.get_absolute_url())
+    context = {
+        "instance": instance,
+        "category_form": form
+    }
+    return render(request, 'product/category.html', context)

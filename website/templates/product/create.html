@@ -7,9 +7,9 @@
   </head>
   <body>
     <h1>Sell Product</h1>
+    <a href="{%  url 'website:products' %}">All Products</a> | <a href="{% url 'website:logout' %}">Logout</a>
 
-
-    <form action="{% url 'website:sell' %}" method="post">
+    <form action="" method="post">
       {% csrf_token %}
       {{ product_form.as_p }}
       <input type="submit" value="Sell It" />

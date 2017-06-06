@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon</title>
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+    <a href="{% url 'website:products' %}">All Products</a> | <a href="{% url 'website:categories' %}">All Products</a> | <a href="{% url 'website:logout' %}">Logout</a>
+    <hr>
+    <form action="" method="post">
+        <h2>Edit {{ instance.name }} Category</h2>
+      {% csrf_token %}
+      {{ category_form.as_p }}
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

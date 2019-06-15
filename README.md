@@ -4,10 +4,10 @@ This web application is the source code for the Bangazon e-commerce web site. It
 
 Students, you are inheriting a basic implementation that provides the following features:
 
-1. User registration 
-1. User login 
-1. User logout 
-1. Adding a product 
+1. User registration
+1. User login
+1. User logout
+1. Adding a product
 1. Listing products
 
 Please consult the backlog of issues and work with your product owner to implement the top priority tickets for your sprints.
@@ -18,6 +18,22 @@ Please consult the backlog of issues and work with your product owner to impleme
 1. Alert your manager when this is complete and all backlog issues will be imported into your fork.
 1. Each teammate should clone the repository.
 1. In the `djangazon` directory that gets created, run the migrations with `python manage.py migrate`
+
+## Individual Setup
+
+1. Be in the project directory
+1. `python3 -m venv env`
+1. `source ./env/bin/activate`
+1. Touch `.env`
+1. In VS Code, modify `.vscode/settings.json` to have the following code
+    ```json
+    {
+        "python.pythonPath": "env/bin/python",
+        "python.envFile": "${workspaceFolder}/.env"
+    }
+    ```
+1. Choose the Python interpreter from the local `env` directory.
+
 
 ## Helpful Resources
 

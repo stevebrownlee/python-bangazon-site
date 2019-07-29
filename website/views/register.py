@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from website.forms import UserForm
+from . import login_user
 
 
 def register(request):

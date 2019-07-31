@@ -1,0 +1,12 @@
+.product {
+    padding: 0 2em 0.5em 2em;
+    border: 1px solid gray;
+}
+
+.product__title {
+    font-size: 2em;
+}
+
+.product__description {
+    font-size: 1.5em;
+}
